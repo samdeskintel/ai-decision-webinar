@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter','Segoe UI',Arial,sans-serif; background:#e8e8e6; }
+
+.nav { position:fixed; top:0; left:0; right:0; height:44px; background:#1a1a1a; display:flex; align-items:center; justify-content:space-between; padding:0 20px; z-index:100; }
+.nav-title { font-size:11px; color:#888; font-weight:600; }
+.nav-controls { display:flex; align-items:center; gap:12px; }
+.nav-btn { background:none; border:1px solid #444; color:#ccc; border-radius:4px; padding:4px 12px; font-size:11px; cursor:pointer; font-family:inherit; }
+.nav-btn:hover { background:#333; }
+.nav-counter { font-size:11px; color:#666; min-width:60px; text-align:center; }
+.section-pills { display:flex; gap:6px; }
+.pill { font-size:9px; padding:3px 8px; border-radius:10px; cursor:pointer; font-weight:600; border:none; font-family:inherit; }
+.pill:hover { opacity:0.8; }
+
+.deck { margin-top:60px; padding:24px; display:flex; flex-direction:column; gap:24px; }
+
+.slide { width:1280px; min-height:720px; background:#fff; border-radius:10px; overflow:hidden; position:relative; box-shadow:0 2px 16px rgba(0,0,0,0.1); display:none; }
+.slide.active { display:flex; flex-direction:column; }
+.slide-inner { padding:48px 56px 40px; flex:1; display:flex; flex-direction:column; }
+
+.slide-num { position:absolute; bottom:16px; right:20px; font-size:10px; color:#ccc; font-weight:600; }
+.slide-section { position:absolute; top:16px; left:20px; font-size:9.5px; color:#ccc; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; }
+.presenter-tag { position:absolute; top:14px; right:20px; font-size:10px; font-weight:700; padding:3px 10px; border-radius:10px; }
+.pt-kris { background:#e2f5ee; color:#0c5e45; }
+.pt-tamara { background:#f0eaff; color:#3C3489; }
+.pt-both { background:#e6f1fb; color:#185fa5; }
+
+.eyebrow { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#1D9E75; margin-bottom:8px; }
+.h1 { font-size:32px; font-weight:800; color:#1a1a1a; line-height:1.2; max-width:860px; }
+.h2 { font-size:24px; font-weight:800; color:#1a1a1a; line-height:1.25; max-width:860px; }
+.body-lg { font-size:15px; color:#555; line-height:1.7; max-width:740px; }
+.body { font-size:13px; color:#555; line-height:1.65; }
+.label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:#bbb; }
+.divider { height:1px; background:#ececec; margin:20px 0; }
+
+.hero-slide { background:#0d1f1a; }
+.hero-slide .slide-inner { justify-content:center; }
+.hero-slide .h1 { color:#fff; font-size:38px; max-width:900px; }
+.hero-slide .body-lg { color:#9FE1CB; }
+.hero-slide .eyebrow { color:#1D9E75; }
+.presenter-row { display:flex; gap:16px; margin-top:32px; }
+.presenter-card { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:12px 20px; }
+.presenter-card .name { font-size:13px; font-weight:700; color:#fff; }
+.presenter-card .title { font-size:11px; color:#9FE1CB; margin-top:2px; }
+.hero-meta { font-size:12px; color:#5DCAA5; margin-top:24px; }
+
+.stat-grid { display:grid; gap:14px; margin-top:20px; }
+.g4 { grid-template-columns:repeat(4,1fr); }
+.g3 { grid-template-columns:repeat(3,1fr); }
+.g2 { grid-template-columns:repeat(2,1fr); }
+.stat-card { background:#fafaf8; border:1px solid #ebebeb; border-radius:8px; padding:18px 20px; }
+.stat-num { font-size:32px; font-weight:800; color:#1D9E75; line-height:1; }
+.stat-label { font-size:11.5px; color:#666; margin-top:6px; line-height:1.5; }
+
+.problem-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px; }
+.problem-card { border-radius:8px; padding:20px; border-left:3px solid; }
+.pc-red { background:#fff5f2; border-color:#e24b4a; }
+.pc-amber { background:#fffbf0; border-color:#EF9F27; }
+.pc-gray { background:#fafaf8; border-color:#bbb; }
+.problem-title { font-size:13px; font-weight:700; color:#333; margin-bottom:8px; }
+.problem-verdict { font-size:11px; font-weight:700; margin-top:10px; }
+.pv-red { color:#a32d2d; }
+.pv-amber { color:#a07010; }
+.pv-gray { color:#666; }
+
+.callout { border-radius:8px; padding:14px 20px; margin-top:16px; }
+.callout-green { background:#e2f5ee; }
+.callout-purple { background:#f0eaff; }
+.callout-blue { background:#e6f1fb; }
+.callout-amber { background:#fffbf0; }
+.callout-title { font-size:13px; font-weight:700; color:#0c5e45; line-height:1.5; }
+.callout-title.purple { color:#3C3489; }
+.callout-title.blue { color:#185fa5; }
+.callout-title.amber { color:#a07010; }
+.callout-sub { font-size:11px; color:#1D9E75; margin-top:3px; }
+.callout-sub.purple { color:#7F77DD; }
+.callout-sub.blue { color:#378ADD; }
+
+.tamara-slide { background:#faf8ff; }
+.kris-slide { background:#f8fdfb; }
+
+.quote-mark { font-size:72px; color:#9FE1CB; line-height:0.8; margin-bottom:12px; font-family:Georgia,serif; }
+.quote-text { font-size:22px; font-weight:600; color:#1a1a1a; line-height:1.5; max-width:860px; font-style:italic; }
+.quote-attr { font-size:12px; color:#888; margin-top:20px; font-weight:600; }
+
+.aware-strip { display:grid; grid-template-columns:repeat(5,1fr); border-radius:10px; overflow:hidden; border:1px solid #e8e8e8; margin-top:20px; }
+.aware-cell { padding:20px 14px; text-align:center; border-right:1px solid #e8e8e8; }
+.aware-cell:last-child { border-right:none; }
+.aware-letter { font-size:36px; font-weight:900; line-height:1; }
+.aware-name { font-size:12px; font-weight:700; margin-top:4px; }
+.aware-q { font-size:10.5px; color:#888; margin-top:6px; line-height:1.4; font-style:italic; }
+.aware-tagline { font-size:11px; font-weight:700; margin-top:8px; }
+.aw-a { background:#fff5f2; } .aw-a .aware-letter,.aw-a .aware-name { color:#b8350a; } .aw-a .aware-tagline { color:#b8350a; }
+.aw-w { background:#fffbf0; } .aw-w .aware-letter,.aw-w .aware-name { color:#a07010; } .aw-w .aware-tagline { color:#a07010; }
+.aw-ar { background:#f0f6ff; } .aw-ar .aware-letter,.aw-ar .aware-name { color:#185fa5; } .aw-ar .aware-tagline { color:#185fa5; }
+.aw-r { background:#f0faf6; } .aw-r .aware-letter,.aw-r .aware-name { color:#0c5e45; } .aw-r .aware-tagline { color:#0c5e45; }
+.aw-e { background:#f5f2ff; } .aw-e .aware-letter,.aw-e .aware-name { color:#5b3fc8; } .aw-e .aware-tagline { color:#5b3fc8; }
+
+.stage-layout { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:20px; flex:1; }
+.stage-col { display:flex; flex-direction:column; gap:12px; }
+.before-box { background:#fafaf8; border-radius:8px; padding:18px 20px; border:1px solid #ebebeb; flex:1; }
+.after-box { background:#e2f5ee; border-radius:8px; padding:18px 20px; border:1px solid #9FE1CB; flex:1; }
+.box-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; margin-bottom:8px; }
+.bl-gray { color:#aaa; }
+.bl-green { color:#1D9E75; }
+.box-title { font-size:14px; font-weight:700; color:#333; margin-bottom:6px; }
+.box-items { display:flex; flex-direction:column; gap:5px; }
+.bi { font-size:11.5px; color:#555; line-height:1.5; padding-left:14px; position:relative; }
+.bi::before { content:'→'; position:absolute; left:0; color:#ccc; font-size:10px; top:2px; }
+.bi.green::before { color:#1D9E75; }
+.compression-badge { background:#1D9E75; color:#fff; border-radius:6px; padding:8px 14px; font-size:12px; font-weight:700; text-align:center; margin-top:8px; }
+
+/* AWARE CURVE VISUAL */
+.curve-container { position:relative; width:100%; height:320px; margin-top:16px; }
+.curve-svg { width:100%; height:100%; }
+
+/* COMPRESSION TABLE */
+.compress-table { margin-top:16px; border:1px solid #e8e8e8; border-radius:8px; overflow:hidden; }
+.ct-header { display:grid; grid-template-columns:90px 1fr 1fr 120px; background:#fafaf8; border-bottom:1px solid #e8e8e8; }
+.ct-head { padding:8px 12px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#aaa; border-right:1px solid #e8e8e8; }
+.ct-head:last-child { border-right:none; }
+.ct-row { display:grid; grid-template-columns:90px 1fr 1fr 120px; border-bottom:1px solid #f4f4f2; }
+.ct-row:last-child { border-bottom:none; }
+.ct-stage { padding:12px; display:flex; align-items:center; justify-content:center; border-right:1px solid #e8e8e8; }
+.ct-letter { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:900; color:#fff; flex-shrink:0; }
+.ct-before { padding:12px; border-right:1px solid #f0f0ee; background:#fefefe; font-size:11px; color:#666; line-height:1.55; }
+.ct-after { padding:12px; border-right:1px solid #f0f0ee; background:#f6fdf9; font-size:11px; color:#444; line-height:1.55; }
+.ct-badge { padding:12px; display:flex; align-items:center; justify-content:center; text-align:center; background:#f0faf6; font-size:10px; font-weight:700; color:#0c5e45; line-height:1.4; }
+
+.matrix-wrap { margin-top:16px; border:1px solid #e8e8e8; border-radius:8px; overflow:hidden; }
+.matrix-grid { display:grid; grid-template-columns:100px repeat(5,1fr); }
+.mh { padding:10px 8px; text-align:center; border-right:1px solid #e8e8e8; border-bottom:1px solid #e8e8e8; }
+.mh:last-child { border-right:none; }
+.mh-letter { font-size:20px; font-weight:900; line-height:1; }
+.mh-name { font-size:10px; font-weight:700; margin-top:2px; }
+.mrow-label { padding:10px 8px; background:#fafaf8; border-right:1px solid #e8e8e8; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; text-align:center; }
+.mcell { padding:10px 10px; border-right:1px solid #f0f0ee; border-bottom:1px solid #f4f4f2; }
+.mcell:last-child { border-right:none; }
+.mc-title { font-size:10px; font-weight:700; color:#333; margin-bottom:3px; }
+.mc-body { font-size:9.5px; color:#777; line-height:1.5; }
+.mrow-r .mcell { background:#fefefe; }
+.mrow-aug .mcell { background:#fdfdf8; }
+.mrow-auto .mcell { background:#f6fdf9; }
+.mrow-auto .mcell { border-bottom:none; }
+
+.step-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px; flex:1; }
+.step-card { border-radius:8px; padding:22px; border:1px solid #e8e8e8; border-top:3px solid; display:flex; flex-direction:column; gap:8px; }
+.sc1 { border-top-color:#EF9F27; }
+.sc2 { border-top-color:#1D9E75; }
+.sc3 { border-top-color:#5b3fc8; }
+.step-num { font-size:28px; font-weight:900; line-height:1; }
+.sn1 { color:#a07010; }
+.sn2 { color:#1D9E75; }
+.sn3 { color:#5b3fc8; }
+.step-title { font-size:15px; font-weight:700; color:#333; }
+.step-body { font-size:12px; color:#666; line-height:1.65; flex:1; }
+
+.maturity-arc { display:flex; gap:0; border-radius:6px; overflow:hidden; height:36px; margin-top:16px; }
+.ma-seg { flex:1; display:flex; align-items:center; justify-content:center; font-size:10.5px; font-weight:700; }
+.ma-1 { background:#f5f5f3; color:#888; }
+.ma-2 { background:#fff8e6; color:#a07010; }
+.ma-3 { background:#e2f5ee; color:#0c5e45; }
+.ma-arrow { width:0; height:0; border-top:18px solid transparent; border-bottom:18px solid transparent; flex-shrink:0; }
+.maa1 { border-left:12px solid #f5f5f3; }
+.maa2 { border-left:12px solid #fff8e6; }
+
+.flow { display:flex; align-items:center; gap:0; margin-top:24px; }
+.flow-step { flex:1; border-radius:8px; padding:16px 12px; text-align:center; }
+.flow-arrow { color:#ccc; font-size:20px; padding:0 4px; flex-shrink:0; }
+.fs1{background:#fff5f2;} .fs2{background:#fffbf0;} .fs3{background:#f0f6ff;} .fs4{background:#f0faf6;} .fs5{background:#fafaf8;}
+.flow-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; }
+.fl1{color:#b8350a;} .fl2{color:#a07010;} .fl3{color:#185fa5;} .fl4{color:#0c5e45;} .fl5{color:#888;}
+.flow-text { font-size:11px; color:#555; margin-top:4px; line-height:1.4; }
+.flow-time { font-size:10px; font-weight:700; margin-top:6px; color:#e24b4a; }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-title">How AI is compressing time-to-decision for GSOCs · samdesk</div>
+  <div class="nav-controls">
+    <div class="section-pills">
+      <button class="pill" style="background:#333;color:#ccc;" onclick="goTo(1)">Intro</button>
+      <button class="pill" style="background:#e2f5ee;color:#0c5e45;" onclick="goTo(7)">AI Changes</button>
+      <button class="pill" style="background:#fff5f2;color:#b8350a;" onclick="goTo(12)">AWARE</button>
+      <button class="pill" style="background:#f0faf6;color:#0c5e45;" onclick="goTo(18)">Resolve+Enable</button>
+      <button class="pill" style="background:#f5f5f3;color:#555;" onclick="goTo(22)">Maturity</button>
+      <button class="pill" style="background:#e6f1fb;color:#185fa5;" onclick="goTo(28)">Start</button>
+      <button class="pill" style="background:#f0eaff;color:#5b3fc8;" onclick="goTo(32)">Close</button>
+    </div>
+    <button class="nav-btn" onclick="prev()">← Prev</button>
+    <div class="nav-counter" id="counter">1 / 33</div>
+    <button class="nav-btn" onclick="next()">Next →</button>
+  </div>
+</div>
+
+<div class="deck" id="deck">
+
+<!-- SLIDE 01 — UPDATED: Kris title -->
+<div class="slide hero-slide active" id="s1">
+  <div class="slide-inner">
+    <div class="eyebrow">Webinar · 2026</div>
+    <div class="h1" style="margin-top:8px;">How AI is compressing<br>time-to-decision for GSOCs</div>
+    <div class="body-lg" style="margin-top:16px;">A capability maturity journey — from reactive security operations to autonomous, AI-driven decisioning. Introducing the AWARE framework.</div>
+    <div class="presenter-row">
+      <div class="presenter-card"><div class="name">Kris</div><div class="title">Director, Product Marketing · samdesk</div></div>
+      <div class="presenter-card"><div class="name">Tamara</div><div class="title">VP Customer Success · samdesk</div></div>
+    </div>
+    <div class="hero-meta">45 minutes · including live Q&amp;A</div>
+  </div>
+  <div class="slide-num" style="color:#5DCAA5;">01 / 33</div>
+</div>
+
+<!-- SLIDE 02 -->
+<div class="slide" id="s2">
+  <div class="slide-section">Setting the scene</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div class="eyebrow">The world is accelerating</div>
+    <div class="h2">The environment your GSOC is operating in is getting harder — every year</div>
+    <div class="stat-grid g4" style="margin-top:24px;">
+      <div class="stat-card"><div class="stat-num">1M+</div><div class="stat-label">Global disruption signals generated every single day — weather, health, civil unrest, transportation, life safety</div></div>
+      <div class="stat-card"><div class="stat-num">↑</div><div class="stat-label">Rising complexity across all threat categories — the world is generating more danger signals, not fewer</div></div>
+      <div class="stat-card"><div class="stat-num">24/7</div><div class="stat-label">Threats don't respect shift patterns. Your security operations need to match the pace of the world.</div></div>
+      <div class="stat-card"><div class="stat-num">Global</div><div class="stat-label">Your people, assets, and operations span geographies. Your risk intelligence needs to match that scope.</div></div>
+    </div>
+    <div class="callout callout-green" style="margin-top:20px;">
+      <div class="callout-title">Not everything can be anticipated — but AI gives foresight on the inevitable. The teams that move fastest stop being surprised by predictable events.</div>
+    </div>
+  </div>
+  <div class="slide-num">02 / 33</div>
+</div>
+
+<!-- SLIDE 03 -->
+<div class="slide tamara-slide" id="s3">
+  <div class="slide-section">Setting the scene</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner" style="justify-content:center;">
+    <div class="eyebrow">From the field</div>
+    <div class="quote-mark">"</div>
+    <div class="quote-text">Every GSOC leader we talk to is describing the same pressure. More signals, same team size, higher expectations from the board — and a growing sense that the tools they have weren't built for the world they're operating in now.</div>
+    <div class="quote-attr">— Tamara, VP Customer Success · Pattern observed across samdesk customer base</div>
+    <div class="callout callout-purple" style="margin-top:32px;">
+      <div class="callout-title purple">The conversation has shifted. A year ago, leaders were asking "should we look at AI?" Today they're asking "how fast can we move?"</div>
+    </div>
+  </div>
+  <div class="slide-num">03 / 33</div>
+</div>
+
+<!-- SLIDE 04 -->
+<div class="slide" id="s4">
+  <div class="slide-section">Setting the scene</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div class="eyebrow">The three failure modes</div>
+    <div class="h2">Security operations are fragmented — tools solve parts of the problem, not the whole</div>
+    <div class="problem-grid">
+      <div class="problem-card pc-red">
+        <div class="problem-title">Detection &amp; alerting tools</div>
+        <div class="body">Tools like Dataminr automate signal detection. But they surface alerts — not decisions. Analysts still spend hours on context, validation, and org impact. Signal volume without decisioning intelligence.</div>
+        <div class="problem-verdict pv-red">Good at detection — weak at decision</div>
+      </div>
+      <div class="problem-card pc-amber">
+        <div class="problem-title">Mass comms &amp; specialist tools</div>
+        <div class="body">Everbridge, Ontic, ESRI and others solve specific problems — notifications, investigations, GIS. They have some alerting, but it's not their core strength. They don't connect detection to decision.</div>
+        <div class="problem-verdict pv-amber">Good at delivery — blind at decision</div>
+      </div>
+      <div class="problem-card pc-gray">
+        <div class="problem-title">The gap between tools</div>
+        <div class="body">The real cost isn't any single tool — it's the human work required to connect them. Validating alerts, building context, mapping org impact, deciding what to do. That work lives between the tools.</div>
+        <div class="problem-verdict pv-gray">The decision layer is missing</div>
+      </div>
+    </div>
+    <div class="callout callout-amber" style="margin-top:16px;">
+      <div class="callout-title amber">Most teams have tools. What they don't have is a connected operational cycle — from early warning through to resolution — with AI compressing every stage.</div>
+    </div>
+  </div>
+  <div class="slide-num">04 / 33</div>
+</div>
+
+<!-- SLIDE 05 — UPDATED: Analyze spelling, reframe real cost -->
+<div class="slide tamara-slide" id="s5">
+  <div class="slide-section">Setting the scene</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner">
+    <div class="eyebrow">The real cost</div>
+    <div class="h2">The software budget is the smallest part of what security operations actually cost</div>
+    <div class="stat-grid g3" style="margin-top:24px;">
+      <div class="stat-card"><div class="stat-num">6 hrs</div><div class="stat-label">Average analyst time lost per incident — not to detection, but to what comes after: validating accuracy, building context, mapping org exposure</div></div>
+      <div class="stat-card"><div class="stat-num">6 : 1</div><div class="stat-label">For every $1 spent on security software, $6 is spent on services, contractors, and people to operate and connect those tools</div></div>
+      <div class="stat-card"><div class="stat-num">$500K+</div><div class="stat-label">Typical fragmented SaaS stack — tools that each solve part of the problem and still require humans in the middle</div></div>
+    </div>
+    <div class="quote-mark" style="font-size:48px;color:#C6C3F5;margin-top:20px;">"</div>
+    <div class="quote-text" style="font-size:18px;">The Analyze stage is where analyst time goes to die. The alert arrives — and the next six hours are spent figuring out what it actually means for the organization. That's the gap AI closes first.</div>
+    <div class="quote-attr">— Tamara</div>
+  </div>
+  <div class="slide-num">05 / 33</div>
+</div>
+
+<!-- SLIDE 06 -->
+<div class="slide" id="s6">
+  <div class="slide-section">Setting the scene</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div class="eyebrow">What security leaders actually want</div>
+    <div class="h2">The brief has changed — security is being asked to be a business enabler, not just a protective function</div>
+    <div class="stat-grid g2" style="margin-top:24px; flex:1;">
+      <div class="stat-card" style="background:#fff5f2; border-color:#F5C4B3;">
+        <div style="font-size:13px;font-weight:700;color:#a32d2d;margin-bottom:12px;">The old brief</div>
+        <div class="bi" style="margin-bottom:6px;">Protect lives and assets — react when something happens</div>
+        <div class="bi" style="margin-bottom:6px;">Shut down operations when risk is too high</div>
+        <div class="bi" style="margin-bottom:6px;">Justify the security budget to the CFO</div>
+        <div class="bi" style="margin-bottom:6px;">Be a cost centre that responds to incidents</div>
+        <div class="bi">React faster than last time</div>
+      </div>
+      <div class="stat-card" style="background:#e2f5ee; border-color:#9FE1CB;">
+        <div style="font-size:13px;font-weight:700;color:#0c5e45;margin-bottom:12px;">The new brief</div>
+        <div class="bi green" style="margin-bottom:6px;">Anticipate risk before it disrupts people, logistics, and operations</div>
+        <div class="bi green" style="margin-bottom:6px;">Keep the business running through disruption — not shut it down</div>
+        <div class="bi green" style="margin-bottom:6px;">Prove improvement with data — earn more investment</div>
+        <div class="bi green" style="margin-bottom:6px;">Be proactive — show up as a strategic partner to the business</div>
+        <div class="bi green">Move from reactive posture to business enablement</div>
+      </div>
+    </div>
+    <div class="callout callout-green" style="margin-top:16px;">
+      <div class="callout-title">The question is no longer "should we automate?" The question is "how fast can we go?" AI is what makes the new brief achievable.</div>
+    </div>
+  </div>
+  <div class="slide-num">06 / 33</div>
+</div>
+
+<!-- SLIDE 07 -->
+<div class="slide" id="s7">
+  <div class="slide-section">What AI changes</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div class="eyebrow">The current model</div>
+    <div class="h2">Where the time goes today — and where AI compresses it</div>
+    <div class="flow" style="margin-top:32px;">
+      <div class="flow-step fs1"><div class="flow-label fl1">Alert</div><div class="flow-text">Tool surfaces a signal or event</div><div class="flow-time">t=0</div></div>
+      <div class="flow-arrow">›</div>
+      <div class="flow-step fs2"><div class="flow-label fl2">Validate</div><div class="flow-text">Analyst checks: real or false positive?</div><div class="flow-time">+30–90 min</div></div>
+      <div class="flow-arrow">›</div>
+      <div class="flow-step fs3"><div class="flow-label fl3">Context</div><div class="flow-text">Build org exposure: who, where, what?</div><div class="flow-time">+2–3 hrs</div></div>
+      <div class="flow-arrow">›</div>
+      <div class="flow-step fs4"><div class="flow-label fl4">Decide</div><div class="flow-text">Analyst applies threshold — act or stand down</div><div class="flow-time">+1 hr</div></div>
+      <div class="flow-arrow">›</div>
+      <div class="flow-step fs5"><div class="flow-label fl5">Execute</div><div class="flow-text">Draft plan, notify, brief stakeholders</div><div class="flow-time">+1–2 hrs</div></div>
+    </div>
+    <div class="callout callout-amber" style="margin-top:32px;">
+      <div class="callout-title amber">The alert is the easy part. The 6 hours after it — validation, context building, org impact mapping, decision, execution — that's where AI has the highest impact.</div>
+      <div class="callout-sub" style="color:#a07010;">And that's for a single incident. GSOCs are managing many simultaneously.</div>
+    </div>
+  </div>
+  <div class="slide-num">07 / 33</div>
+</div>
+
+<!-- SLIDE 08 — UPDATED: Honest before/after for each AWARE stage -->
+<div class="slide" id="s8">
+  <div class="slide-section">What AI changes</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div class="eyebrow">AI compression across the full cycle</div>
+    <div class="h2">Where tools fall short today — and what AI changes at each stage</div>
+    <div class="compress-table" style="margin-top:20px;">
+      <div class="ct-header">
+        <div class="ct-head">Stage</div>
+        <div class="ct-head">Current state — tools &amp; gaps</div>
+        <div class="ct-head">With AI — what changes</div>
+        <div class="ct-head">Compression</div>
+      </div>
+      <!-- Anticipate -->
+      <div class="ct-row">
+        <div class="ct-stage"><div class="ct-letter" style="background:#b8350a;">A</div></div>
+        <div class="ct-before"><strong style="color:#333;">Anticipate:</strong> Quarterly geo-political webinars and regional briefings from some vendors. No personalized, continuous, org-specific foresight. Teams are informed — not forewarned.</div>
+        <div class="ct-after"><strong style="color:#0c5e45;">Anticipate:</strong> Daily Unclassified intel digest. Historical event search by geography. Pre-travel briefs showing disruption patterns before a traveler departs. Org-specific foresight, continuously updated.</div>
+        <div class="ct-badge">Quarterly → Daily &amp; continuous</div>
+      </div>
+      <!-- Watch -->
+      <div class="ct-row">
+        <div class="ct-stage"><div class="ct-letter" style="background:#a07010;">W</div></div>
+        <div class="ct-before"><strong style="color:#333;">Watch:</strong> Most teams use an alerting tool — but quality varies. Dataminr is fast and automated. Factal uses human analysts and is slower. Specialist tools (comms, GIS, investigations) have alerting but it's not their core strength.</div>
+        <div class="ct-after"><strong style="color:#0c5e45;">Watch:</strong> Real-time AI detection across all threat categories, 24/7. Incidents tracked and updated continuously as new signals emerge. Consistent quality regardless of event type or geography.</div>
+        <div class="ct-badge">Variable quality → consistent, continuous</div>
+      </div>
+      <!-- Analyze -->
+      <div class="ct-row">
+        <div class="ct-stage"><div class="ct-letter" style="background:#185fa5;">A</div></div>
+        <div class="ct-before"><strong style="color:#333;">Analyze:</strong> Alert received — now the manual work begins. Analyst validates accuracy, checks for false positives, builds location context, cross-references org exposure. 6+ hours per incident.</div>
+        <div class="ct-after"><strong style="color:#0c5e45;">Analyze:</strong> AI instantly maps event to org exposure — who is where, what facilities are in range, what the risk threshold indicates. Analyst receives a pre-assembled brief. Validation time cut from hours to minutes.</div>
+        <div class="ct-badge">6+ hrs → minutes</div>
+      </div>
+      <!-- Resolve -->
+      <div class="ct-row">
+        <div class="ct-stage"><div class="ct-letter" style="background:#0c5e45;">R</div></div>
+        <div class="ct-before"><strong style="color:#333;">Resolve:</strong> Human decision required for most responses. Some tools can trigger mass notifications. Complex resolutions need access to multiple policies and systems — orchestrated manually each time.</div>
+        <div class="ct-after"><strong style="color:#0c5e45;">Resolve:</strong> AI generates a suggested response plan based on the specific org and risk vector — not a generic playbook. Threshold-based actions automated (e.g. travel disruption → notify traveler instantly). Complex responses guided by AI, executed by analyst.</div>
+        <div class="ct-badge">Manual → AI-guided + automated triggers</div>
+      </div>
+      <!-- Enable -->
+      <div class="ct-row" style="border-bottom:none;">
+        <div class="ct-stage"><div class="ct-letter" style="background:#5b3fc8;">E</div></div>
+        <div class="ct-before"><strong style="color:#333;">Enable:</strong> Customers are largely left to themselves. No structured measurement, no maturity benchmarking, no audit trail built into the workflow. Improvement is invisible.</div>
+        <div class="ct-after"><strong style="color:#0c5e45;">Enable:</strong> Full audit trail across every incident. Time-to-detect, time-to-understand, time-to-outcome tracked automatically. AWARE maturity score. Security function can prove its value and earn investment.</div>
+        <div class="ct-badge">Invisible → measurable &amp; continuous</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">08 / 33</div>
+</div>
+
+<!-- SLIDE 09 -->
+<div class="slide tamara-slide" id="s9">
+  <div class="slide-section">What AI changes</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner" style="justify-content:center;">
+    <div class="eyebrow">From the field</div>
+    <div class="quote-mark">"</div>
+    <div class="quote-text">The first time a customer sees their own incidents run through the platform automatically — their real data, their real people, their real workflow — the reaction is always the same. They go quiet for a moment, and then they say: "why were we doing this manually?"</div>
+    <div class="quote-attr">— Tamara, VP Customer Success</div>
+    <div class="callout callout-purple" style="margin-top:32px;">
+      <div class="callout-title purple">The compression isn't theoretical. It's visible the first time you run a real incident through an AI-augmented workflow. That's why we offer a two-week trial on your own data — not a synthetic demo.</div>
+    </div>
+  </div>
+  <div class="slide-num">09 / 33</div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide" id="s10">
+  <div class="slide-section">What AI changes</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div class="eyebrow">The analyst story</div>
+    <div class="h2">AI is not coming for your analysts — it's coming for their triage queue</div>
+    <div class="stage-layout" style="margin-top:24px;">
+      <div class="before-box">
+        <div class="box-label bl-gray">What analysts spend time on today</div>
+        <div class="box-items">
+          <div class="bi">Receive alert from a tool — is it a false positive?</div>
+          <div class="bi">Manually validate accuracy and relevance</div>
+          <div class="bi">Build location context — what happened exactly, where?</div>
+          <div class="bi">Cross-reference org exposure — who is affected?</div>
+          <div class="bi">Apply risk threshold — act or stand down?</div>
+          <div class="bi">Draft a response plan, notify, brief stakeholders</div>
+        </div>
+        <div style="margin-top:14px;font-size:12px;color:#a32d2d;font-weight:600;">The alert is automated. Everything after it is still largely manual.</div>
+      </div>
+      <div class="after-box">
+        <div class="box-label bl-green">What analysts do with AI</div>
+        <div class="box-items">
+          <div class="bi green">Receive a pre-assembled brief — context already built</div>
+          <div class="bi green">Review AI-validated accuracy and org impact mapping</div>
+          <div class="bi green">Make a threshold-based decision — act or stand down</div>
+          <div class="bi green">Review and approve AI-suggested response plan</div>
+          <div class="bi green">Handle edge cases and judgment calls that need human expertise</div>
+          <div class="bi green">Focus on strategic foresight, scenario planning, program improvement</div>
+        </div>
+        <div class="compression-badge">Analyst time on post-alert triage: cut by 6+ hours per incident</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">10 / 33</div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide tamara-slide" id="s11">
+  <div class="slide-section">What AI changes</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner" style="justify-content:center;">
+    <div class="eyebrow">From the field</div>
+    <div class="quote-mark">"</div>
+    <div class="quote-text">The analysts at our most mature customers aren't spending their days validating alerts anymore. They're doing strategic work — briefing leadership, improving playbooks, running scenarios. The triage burden has been lifted. And what they tell us most often is: they wish they'd done it sooner.</div>
+    <div class="quote-attr">— Tamara, VP Customer Success</div>
+    <div class="callout callout-purple" style="margin-top:32px;">
+      <div class="callout-title purple">The goal is not fewer security professionals. It's better ones, doing more valuable work. AI handles the volume and the validation. Analysts handle the judgment and the strategy.</div>
+    </div>
+  </div>
+  <div class="slide-num">11 / 33</div>
+</div>
+
+<!-- SLIDE 12 — AWARE intro with Tamara's taglines -->
+<div class="slide" id="s12">
+  <div class="slide-section">Introducing AWARE</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div class="eyebrow">The framework</div>
+    <div class="h2">Introducing AWARE — a model for the full GSOC operational cycle</div>
+    <div class="body-lg" style="margin-top:12px;">AWARE maps the five stages of how a security team operates. It's a framework for identifying where AI compresses time — and where your team has the most room to mature.</div>
+    <div class="aware-strip">
+      <div class="aware-cell aw-a">
+        <div class="aware-letter">A</div>
+        <div class="aware-name">Anticipate</div>
+        <div class="aware-q">"What could happen — can we get ahead of it?"</div>
+        <div class="aware-tagline">"We see events."</div>
+      </div>
+      <div class="aware-cell aw-w">
+        <div class="aware-letter">W</div>
+        <div class="aware-name">Watch</div>
+        <div class="aware-q">"Is something happening — how is it evolving?"</div>
+        <div class="aware-tagline">"We track events."</div>
+      </div>
+      <div class="aware-cell aw-ar">
+        <div class="aware-letter">A</div>
+        <div class="aware-name">Analyze</div>
+        <div class="aware-q">"What does this mean for our people and operations?"</div>
+        <div class="aware-tagline">"We understand events."</div>
+      </div>
+      <div class="aware-cell aw-r">
+        <div class="aware-letter">R</div>
+        <div class="aware-name">Resolve</div>
+        <div class="aware-q">"What do we do — how fast can we execute?"</div>
+        <div class="aware-tagline">"We act on events."</div>
+      </div>
+      <div class="aware-cell aw-e">
+        <div class="aware-letter">E</div>
+        <div class="aware-name">Enable</div>
+        <div class="aware-q">"Are we improving — can we prove it?"</div>
+        <div class="aware-tagline">"We enable security."</div>
+      </div>
+    </div>
+    <div class="callout callout-green" style="margin-top:20px;">
+      <div class="callout-title">Most GSOCs are strongest in Watch and Analyze — the middle stages. The highest AI impact is at the edges: Anticipate and Resolve. Enable is almost always underdeveloped — and the most important for long-term credibility.</div>
+    </div>
+  </div>
+  <div class="slide-num">12 / 33</div>
+</div>
+
+<!-- SLIDE 13 — UPDATED: Anticipate = pre-incident intel, not 1M signals -->
+<div class="slide" id="s13">
+  <div class="slide-section">AWARE · Anticipate</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;"><div style="background:#fff5f2;border-radius:8px;padding:10px 16px;"><span style="font-size:28px;font-weight:900;color:#b8350a;">A</span></div><div><div class="eyebrow" style="color:#b8350a;">Anticipate — "We see events."</div><div class="h2">Provide intel before an incident occurs — shift from reactive to forewarned</div></div></div>
+    <div class="stage-layout">
+      <div class="before-box">
+        <div class="box-label bl-gray">Current state</div>
+        <div class="box-items">
+          <div class="bi">Some vendors offer quarterly geo-political webinars or regional risk briefings</div>
+          <div class="bi">Generic global breakdowns — not tailored to your org, your routes, your people</div>
+          <div class="bi">No continuous, org-specific foresight between those briefings</div>
+          <div class="bi">Security teams informed after the fact — not forewarned before</div>
+          <div class="bi">Travel risk relies on advisories that may already be outdated</div>
+        </div>
+      </div>
+      <div class="after-box">
+        <div class="box-label bl-green">With samdesk Anticipate</div>
+        <div class="box-items">
+          <div class="bi green"><strong>Unclassified daily digest</strong> — global events from the day before, curated and relevant</div>
+          <div class="bi green"><strong>Advanced historical search</strong> — query what disruptions occurred in a geography over a preceding period</div>
+          <div class="bi green"><strong>Pre-travel briefs</strong> — before a traveler departs, understand what types of disruptions have occurred at that destination</div>
+          <div class="bi green">Security teams arrive at briefings with context — not questions</div>
+        </div>
+        <div class="compression-badge">Foresight: quarterly generic → daily, org-specific, continuous</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">13 / 33</div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide tamara-slide" id="s14">
+  <div class="slide-section">AWARE · Anticipate</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner" style="justify-content:center;">
+    <div class="eyebrow" style="color:#b8350a;">Anticipate — practitioner perspective</div>
+    <div class="quote-mark">"</div>
+    <div class="quote-text">The teams that have Anticipate working well don't talk about incidents the same way anymore. They're not describing what happened and how they responded — they're describing what they saw coming and what they prevented. That shift in language is the signal that the culture has changed.</div>
+    <div class="quote-attr">— Tamara, VP Customer Success</div>
+    <div class="callout callout-green" style="margin-top:32px;">
+      <div class="callout-title">Anticipate is the stage with the lowest adoption today — and the highest strategic value. The pre-travel brief alone changes how security teams engage with the business before every major trip or deployment.</div>
+    </div>
+  </div>
+  <div class="slide-num">14 / 33</div>
+</div>
+
+<!-- SLIDE 15 — UPDATED: Watch — manual work comes after the alert, not before -->
+<div class="slide" id="s15">
+  <div class="slide-section">AWARE · Watch</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;"><div style="background:#fffbf0;border-radius:8px;padding:10px 16px;"><span style="font-size:28px;font-weight:900;color:#a07010;">W</span></div><div><div class="eyebrow" style="color:#a07010;">Watch — "We track events."</div><div class="h2">Detect and monitor as incidents unfold — quality and context matter as much as speed</div></div></div>
+    <div class="stage-layout">
+      <div class="before-box">
+        <div class="box-label bl-gray">Current state — tools exist but vary significantly</div>
+        <div class="box-items">
+          <div class="bi">Most teams use an alerting tool — detection is not fully manual</div>
+          <div class="bi"><strong>Speed varies:</strong> Dataminr is fast and AI-driven. Factal uses human analysts — more accurate but slower</div>
+          <div class="bi"><strong>Specialist tools</strong> (mass comms, GIS, investigations) have alerting but it's not their core capability</div>
+          <div class="bi">After the alert arrives: is it a false positive? What's the full context? Where exactly did this occur?</div>
+          <div class="bi">That post-alert context building is where analyst time is consumed</div>
+        </div>
+      </div>
+      <div class="after-box">
+        <div class="box-label bl-green">With samdesk Watch</div>
+        <div class="box-items">
+          <div class="bi green">Real-time AI detection with context already attached — not just a raw signal</div>
+          <div class="bi green">Incidents tracked and updated continuously as new signals emerge</div>
+          <div class="bi green">AI validates relevance and accuracy — reduces false positive burden on analysts</div>
+          <div class="bi green">Consistent detection quality across all threat categories and geographies</div>
+          <div class="bi green">24/7 coverage — no gap between shifts or weekends</div>
+        </div>
+        <div class="compression-badge">Post-alert context work: hours → context delivered with the alert</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">15 / 33</div>
+</div>
+
+<!-- SLIDE 16 -->
+<div class="slide" id="s16">
+  <div class="slide-section">AWARE · Analyze</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;"><div style="background:#f0f6ff;border-radius:8px;padding:10px 16px;"><span style="font-size:28px;font-weight:900;color:#185fa5;">A</span></div><div><div class="eyebrow" style="color:#185fa5;">Analyze — "We understand events."</div><div class="h2">Understand the risk vector and organizational impact — make a trusted, threshold-based decision</div></div></div>
+    <div class="stage-layout">
+      <div class="before-box">
+        <div class="box-label bl-gray">Current state — the 6-hour problem</div>
+        <div class="box-items">
+          <div class="bi">Alert arrives — analyst manually validates accuracy and checks for false positives</div>
+          <div class="bi">Cross-references event location with traveler lists, facility databases, org charts</div>
+          <div class="bi">Builds context: what exactly happened, how serious, what's the proximity?</div>
+          <div class="bi">Applies risk threshold — often from memory or a spreadsheet</div>
+          <div class="bi">Result: decisions made on incomplete information, hours after the event</div>
+        </div>
+        <div style="margin-top:12px;font-size:11px;color:#a32d2d;font-weight:600;">Average time: 6+ hours. And that assumes the right analyst is on shift.</div>
+      </div>
+      <div class="after-box">
+        <div class="box-label bl-green">With samdesk Analyze</div>
+        <div class="box-items">
+          <div class="bi green">Instant org impact mapping — who is where, what assets are in range</div>
+          <div class="bi green">Risk threshold applied automatically against pre-configured parameters</div>
+          <div class="bi green">Analyst receives a pre-assembled brief with recommended action</div>
+          <div class="bi green">Below threshold: logged automatically. Above: analyst alerted with full context.</div>
+          <div class="bi green">Trusted decision in minutes — not hours of manual cross-referencing</div>
+        </div>
+        <div class="compression-badge">Time-to-understanding: 6+ hours → minutes</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">16 / 33</div>
+</div>
+
+<!-- SLIDE 17 -->
+<div class="slide tamara-slide" id="s17">
+  <div class="slide-section">AWARE · Analyze</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner" style="justify-content:center;">
+    <div class="eyebrow" style="color:#185fa5;">Analyze — practitioner perspective</div>
+    <div class="quote-mark">"</div>
+    <div class="quote-text">Analyze is where I see the biggest before-and-after. Teams come to us spending six hours per incident just figuring out who's affected and what it means. With AI doing the org impact mapping instantly, the analyst's job becomes deciding — not assembling. That's a completely different role.</div>
+    <div class="quote-attr">— Tamara, VP Customer Success</div>
+    <div class="callout callout-blue" style="margin-top:32px;">
+      <div class="callout-title blue">This is also where the 6:1 ratio lives. The labour cost in security operations is concentrated in Analyze — contractors, analysts, consultants all spending time on work AI can do instantly and more accurately.</div>
+    </div>
+  </div>
+  <div class="slide-num">17 / 33</div>
+</div>
+
+<!-- SLIDE 18 — UPDATED: Resolve = AI-suggested plan + automated thresholds + Booking.com example -->
+<div class="slide" id="s18">
+  <div class="slide-section">AWARE · Resolve</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;"><div style="background:#f0faf6;border-radius:8px;padding:10px 16px;"><span style="font-size:28px;font-weight:900;color:#0c5e45;">R</span></div><div><div class="eyebrow" style="color:#0c5e45;">Resolve — "We act on events."</div><div class="h2">Execute to keep operations running — from automated triggers to AI-guided complex responses</div></div></div>
+    <div class="stage-layout">
+      <div class="before-box">
+        <div class="box-label bl-gray">Current state</div>
+        <div class="box-items">
+          <div class="bi">Human decision required for most responses — even routine ones</div>
+          <div class="bi">Some tools can trigger mass notifications, but setup is manual and generic</div>
+          <div class="bi">Complex responses require access to multiple policies, systems, and teams</div>
+          <div class="bi">Response quality depends entirely on who is on shift and their experience</div>
+          <div class="bi">Orchestrating across systems (comms, HR, facilities, travel) is manual every time</div>
+        </div>
+      </div>
+      <div class="after-box">
+        <div class="box-label bl-green">With samdesk Resolve</div>
+        <div class="box-items">
+          <div class="bi green"><strong>Automated threshold triggers:</strong> travel disruption → traveler notified instantly, no human required</div>
+          <div class="bi green"><strong>AI-suggested response plan</strong> based on the specific org, the specific risk vector — not a generic playbook</div>
+          <div class="bi green"><strong>At scale:</strong> Booking.com uses samdesk to automatically notify millions of travelers of disruptions at their destination — zero manual steps</div>
+          <div class="bi green">Complex resolutions guided by AI, executed by analyst — with full context and recommended actions</div>
+        </div>
+        <div class="compression-badge">Routine responses: fully automated · Complex: AI-guided, analyst-approved</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">18 / 33</div>
+</div>
+
+<!-- SLIDE 19 -->
+<div class="slide tamara-slide" id="s19">
+  <div class="slide-section">AWARE · Resolve</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner" style="justify-content:center;">
+    <div class="eyebrow" style="color:#0c5e45;">Resolve — practitioner perspective</div>
+    <div class="quote-mark">"</div>
+    <div class="quote-text">The security leaders who have automated Resolve don't talk about response time anymore. They talk about disruption avoided. That's a fundamentally different conversation — and it's the one that gets security leaders invited to the table as strategic partners, not just operational responders.</div>
+    <div class="quote-attr">— Tamara, VP Customer Success</div>
+    <div class="callout callout-green" style="margin-top:32px;">
+      <div class="callout-title">The goal of Resolve is not speed for its own sake. It's keeping people, operations, and logistics productive through a disruption — without requiring a heroic effort from whoever happens to be on shift.</div>
+    </div>
+  </div>
+  <div class="slide-num">19 / 33</div>
+</div>
+
+<!-- SLIDE 20 — UPDATED: Enable = customers left to themselves today -->
+<div class="slide" id="s20">
+  <div class="slide-section">AWARE · Enable</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;"><div style="background:#f5f2ff;border-radius:8px;padding:10px 16px;"><span style="font-size:28px;font-weight:900;color:#5b3fc8;">E</span></div><div><div class="eyebrow" style="color:#5b3fc8;">Enable — "We enable security."</div><div class="h2">Measure maturity and improve — the stage that earns security teams credibility with leadership</div></div></div>
+    <div class="stage-layout">
+      <div class="before-box">
+        <div class="box-label bl-gray">Current state — customers left to themselves</div>
+        <div class="box-items">
+          <div class="bi">No structured measurement built into the security workflow</div>
+          <div class="bi">Incident reports are manual, inconsistent, written after the fact</div>
+          <div class="bi">No audit trail — hard to defend decisions when something goes wrong</div>
+          <div class="bi">No maturity benchmarking — teams don't know where they stand</div>
+          <div class="bi">Budget conversations based on anecdotes — security can't prove its value</div>
+        </div>
+        <div style="margin-top:12px;font-size:11px;color:#888;font-style:italic;">Most vendors don't provide a capability maturity framework. Customers figure it out alone.</div>
+      </div>
+      <div class="after-box">
+        <div class="box-label bl-green">With samdesk Enable</div>
+        <div class="box-items">
+          <div class="bi green">Full audit trail generated automatically across every incident</div>
+          <div class="bi green">Time-to-detect, time-to-understand, time-to-outcome tracked per event</div>
+          <div class="bi green">AWARE maturity score — know exactly where to invest next</div>
+          <div class="bi green">Board-ready reporting: security function proves its value with data</div>
+          <div class="bi green">Capability journey made visible — investment earns more investment</div>
+        </div>
+        <div class="compression-badge">Proof of value: anecdotal → measurable, always available</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">20 / 33</div>
+</div>
+
+<!-- SLIDE 21 -->
+<div class="slide tamara-slide" id="s21">
+  <div class="slide-section">AWARE · Enable</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner" style="justify-content:center;">
+    <div class="eyebrow" style="color:#5b3fc8;">Enable — practitioner perspective</div>
+    <div class="quote-mark">"</div>
+    <div class="quote-text">Enable is what lets a security leader walk into a budget conversation with data instead of anecdotes. I've watched customers go from fighting for budget to being asked by the CFO "what else do you need?" — because they could finally prove that every dollar invested was compressing time-to-outcome.</div>
+    <div class="quote-attr">— Tamara, VP Customer Success</div>
+    <div class="callout callout-purple" style="margin-top:32px;">
+      <div class="callout-title purple">Enable is the most neglected stage — and the one that changes the security team's relationship with the business most profoundly. It's not just about metrics. It's about credibility and earned investment.</div>
+    </div>
+  </div>
+  <div class="slide-num">21 / 33</div>
+</div>
+
+<!-- SLIDE 22 — AWARE MATURITY CURVE (inspired by Tamara's visual) -->
+<div class="slide" id="s22">
+  <div class="slide-section">The maturity journey</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div class="eyebrow">The AWARE maturity curve</div>
+    <div class="h2">From reactive to proactive — where is your GSOC on this curve?</div>
+
+    <!-- Curve visual -->
+    <div style="position:relative;width:100%;height:260px;margin-top:16px;">
+      <svg width="100%" height="260" viewBox="0 0 1160 260" preserveAspectRatio="none">
+        <!-- Gradient curve fill -->
+        <defs>
+          <linearGradient id="curveGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#e24b4a" stop-opacity="0.3"/>
+            <stop offset="50%" stop-color="#EF9F27" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#1D9E75" stop-opacity="0.3"/>
+          </linearGradient>
+          <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#e24b4a"/>
+            <stop offset="25%" stop-color="#EF9F27"/>
+            <stop offset="50%" stop-color="#EF9F27"/>
+            <stop offset="75%" stop-color="#1D9E75"/>
+            <stop offset="100%" stop-color="#185fa5"/>
+          </linearGradient>
+        </defs>
+        <!-- Y axis -->
+        <line x1="80" y1="20" x2="80" y2="220" stroke="#ccc" stroke-width="1.5" marker-end="url(#yarrow)"/>
+        <defs><marker id="yarrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#ccc"/></marker></defs>
+        <text x="72" y="200" font-size="11" fill="#aaa" text-anchor="middle" transform="rotate(-90,72,130)">Organizational Impact</text>
+        <!-- X axis -->
+        <line x1="80" y1="220" x2="1140" y2="220" stroke="#ccc" stroke-width="1.5"/>
+        <!-- Curve path -->
+        <path d="M80,215 C150,210 250,200 350,185 C450,168 550,148 650,120 C750,92 850,65 950,45 C1000,35 1050,28 1120,22" stroke="url(#lineGrad)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <!-- Fill under curve -->
+        <path d="M80,215 C150,210 250,200 350,185 C450,168 550,148 650,120 C750,92 850,65 950,45 C1000,35 1050,28 1120,22 L1120,220 L80,220 Z" fill="url(#curveGrad)"/>
+        <!-- Stage dots and labels -->
+        <!-- A - Anticipate -->
+        <circle cx="220" cy="204" r="22" fill="#e24b4a"/>
+        <text x="220" y="210" font-size="16" font-weight="900" fill="white" text-anchor="middle">A</text>
+        <text x="220" y="238" font-size="11" font-weight="700" fill="#b8350a" text-anchor="middle">ANTICIPATE</text>
+        <!-- W - Watch -->
+        <circle cx="390" cy="182" r="22" fill="#EF9F27"/>
+        <text x="390" y="188" font-size="16" font-weight="900" fill="white" text-anchor="middle">W</text>
+        <text x="390" y="216" font-size="11" font-weight="700" fill="#a07010" text-anchor="middle">WATCH</text>
+        <!-- A - Analyze -->
+        <circle cx="580" cy="140" r="22" fill="#EF9F27" opacity="0.85"/>
+        <text x="580" y="146" font-size="16" font-weight="900" fill="white" text-anchor="middle">A</text>
+        <text x="580" y="174" font-size="11" font-weight="700" fill="#a07010" text-anchor="middle">ANALYZE</text>
+        <!-- R - Resolve -->
+        <circle cx="790" cy="82" r="22" fill="#1D9E75"/>
+        <text x="790" y="88" font-size="16" font-weight="900" fill="white" text-anchor="middle">R</text>
+        <text x="790" y="116" font-size="11" font-weight="700" fill="#0c5e45" text-anchor="middle">RESOLVE</text>
+        <!-- E - Enable -->
+        <circle cx="1000" cy="42" r="22" fill="#185fa5"/>
+        <text x="1000" y="48" font-size="16" font-weight="900" fill="white" text-anchor="middle">E</text>
+        <text x="1000" y="76" font-size="11" font-weight="700" fill="#185fa5" text-anchor="middle">ENABLEMENT</text>
+        <!-- Reactive / Proactive labels -->
+        <text x="200" y="255" font-size="11" font-weight="700" fill="#e24b4a" text-anchor="middle">REACTIVE</text>
+        <text x="950" y="255" font-size="11" font-weight="700" fill="#1D9E75" text-anchor="middle">PROACTIVE</text>
+        <!-- Arrow pointing right at bottom -->
+        <line x1="300" y1="252" x2="850" y2="252" stroke="#ccc" stroke-width="1" marker-end="url(#xarrow)"/>
+        <defs><marker id="xarrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#ccc"/></marker></defs>
+      </svg>
+    </div>
+
+    <!-- Stage taglines row -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:8px;">
+      <div style="text-align:center;padding:8px;background:#fff5f2;border-radius:6px;font-size:10.5px;font-style:italic;color:#b8350a;">"We see events."</div>
+      <div style="text-align:center;padding:8px;background:#fffbf0;border-radius:6px;font-size:10.5px;font-style:italic;color:#a07010;">"We track events."</div>
+      <div style="text-align:center;padding:8px;background:#f0f6ff;border-radius:6px;font-size:10.5px;font-style:italic;color:#185fa5;">"We understand events."</div>
+      <div style="text-align:center;padding:8px;background:#f0faf6;border-radius:6px;font-size:10.5px;font-style:italic;color:#0c5e45;">"We act on events."</div>
+      <div style="text-align:center;padding:8px;background:#f5f2ff;border-radius:6px;font-size:10.5px;font-style:italic;color:#5b3fc8;">"We enable security."</div>
+    </div>
+  </div>
+  <div class="slide-num">22 / 33</div>
+</div>
+
+<!-- SLIDE 23 -->
+<div class="slide tamara-slide" id="s23">
+  <div class="slide-section">The maturity journey</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner" style="justify-content:center;">
+    <div class="eyebrow">Where most teams actually are</div>
+    <div class="quote-mark">"</div>
+    <div class="quote-text">When I look across our customer base, the pattern is consistent. Most teams have Watch covered — they have some kind of alerting tool. They're reasonable at Analyze. But Anticipate and Enable are almost always underdeveloped. And Resolve is where they have the most to gain the fastest.</div>
+    <div class="quote-attr">— Tamara, VP Customer Success</div>
+    <div class="callout callout-purple" style="margin-top:32px;">
+      <div class="callout-title purple">The edges — Anticipate and Enable — are where competitive advantage is built. Teams deprioritise them because Watch and Analyze feel more urgent. The teams that invest in the edges are the ones that pull ahead.</div>
+    </div>
+  </div>
+  <div class="slide-num">23 / 33</div>
+</div>
+
+<!-- SLIDE 24 -->
+<div class="slide" id="s24">
+  <div class="slide-section">Maturity profiles</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner">
+    <div class="eyebrow">Profile 1</div>
+    <div class="h2">The Watcher — tool in place, but the work after the alert is still manual</div>
+    <div class="stage-layout" style="margin-top:20px;">
+      <div class="before-box">
+        <div class="box-label bl-gray">Where they are today</div>
+        <div class="box-items">
+          <div class="bi">Alert tooling in place — detection is automated to a degree</div>
+          <div class="bi">But context, validation, and org impact mapping is all manual post-alert</div>
+          <div class="bi">Analyze is the bottleneck — 6+ hours per incident</div>
+          <div class="bi">Response depends entirely on who is on shift</div>
+          <div class="bi">No measurement — improvement is invisible to leadership</div>
+        </div>
+        <div style="margin-top:12px;font-size:11px;color:#888;font-style:italic;">Common triggers: unhappy at incumbent renewal, had a disruptive incident, wants less fire hose and more signal</div>
+      </div>
+      <div class="after-box">
+        <div class="box-label bl-green">What moves them forward</div>
+        <div class="box-items">
+          <div class="bi green">Automate Analyze — org impact mapping eliminates the 6-hour bottleneck</div>
+          <div class="bi green">Build risk thresholds so analysts decide, not just react</div>
+          <div class="bi green">Add pre-travel briefs and daily intel to start building Anticipate</div>
+          <div class="bi green">Start tracking time-to-outcome — make improvement visible</div>
+        </div>
+        <div class="compression-badge">Profile 1 → Profile 2 typically within 90 days</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">24 / 33</div>
+</div>
+
+<!-- SLIDE 25 -->
+<div class="slide" id="s25">
+  <div class="slide-section">Maturity profiles</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner">
+    <div class="eyebrow">Profile 2</div>
+    <div class="h2">The Operator — AI-assisted decisioning, building toward automated resolution</div>
+    <div class="stage-layout" style="margin-top:20px;">
+      <div class="before-box">
+        <div class="box-label bl-gray">Where they are today</div>
+        <div class="box-items">
+          <div class="bi">Solid Watch and Analyze — AI-assisted context and org mapping in place</div>
+          <div class="bi">Starting to automate threshold-based responses (e.g. travel notifications)</div>
+          <div class="bi">Good at the middle stages — still weak at the edges</div>
+          <div class="bi">Basic metrics tracked but no structured maturity framework</div>
+          <div class="bi">Can't fully prove improvement to leadership yet</div>
+        </div>
+        <div style="margin-top:12px;font-size:11px;color:#888;font-style:italic;">Common triggers: stack consolidation, wanting more orchestration, looking to reduce contractor headcount</div>
+      </div>
+      <div class="after-box">
+        <div class="box-label bl-green">What moves them forward</div>
+        <div class="box-items">
+          <div class="bi green">Expand automated Resolve — AI-suggested plans for complex incidents</div>
+          <div class="bi green">Build time-to-outcome KPIs and board-ready reporting</div>
+          <div class="bi green">Deepen Anticipate — historical search and advanced pre-travel intelligence</div>
+          <div class="bi green">AWARE maturity scoring — make the capability journey visible</div>
+        </div>
+        <div class="compression-badge">Profile 2 → Profile 3 typically within 6–12 months</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">25 / 33</div>
+</div>
+
+<!-- SLIDE 26 -->
+<div class="slide" id="s26">
+  <div class="slide-section">Maturity profiles</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner">
+    <div class="eyebrow">Profile 3</div>
+    <div class="h2">The Enabler — full AWARE maturity, security as a measurable business function</div>
+    <div class="stage-layout" style="margin-top:20px;">
+      <div class="before-box" style="background:#faf8ff;border:1px solid #D4D0F8;">
+        <div class="box-label" style="color:#7F77DD;">Where they are today</div>
+        <div class="box-items">
+          <div class="bi">Autonomous operations running — AI handles detection, context, and routine resolution</div>
+          <div class="bi">Analysts doing strategic work — foresight, scenario planning, program design</div>
+          <div class="bi">Security function is measurable and earns investment from leadership</div>
+          <div class="bi">Board sees security as a competitive advantage, not a cost centre</div>
+          <div class="bi">Focused on continuous improvement across all five AWARE stages</div>
+        </div>
+      </div>
+      <div class="after-box">
+        <div class="box-label bl-green">What this unlocks for the business</div>
+        <div class="box-items">
+          <div class="bi green">Security becomes a strategic partner — invited into business planning</div>
+          <div class="bi green">Budget conversations led with data — investment earns more investment</div>
+          <div class="bi green">Analysts become design partners — they pull the product roadmap forward</div>
+          <div class="bi green">Organisation avoids disruption at scale — people and operations stay productive</div>
+        </div>
+        <div class="compression-badge">Security as a business enabler — the new brief is fully met</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">26 / 33</div>
+</div>
+
+<!-- SLIDE 27 -->
+<div class="slide kris-slide" id="s27">
+  <div class="slide-section">The maturity journey</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner" style="justify-content:center;">
+    <div class="eyebrow">The journey is faster than you think</div>
+    <div class="quote-mark" style="color:#9FE1CB;">"</div>
+    <div class="quote-text" style="font-size:24px;">The teams that move fastest aren't the ones with the biggest budgets. They're the ones that decided they want to be a business enabler — not a cost centre. That mindset shift happens before the technology. Once it does, the maturity journey accelerates.</div>
+    <div class="quote-attr" style="margin-top:20px;">— Kris, Director, Product Marketing · samdesk</div>
+    <div class="stat-grid g3" style="margin-top:32px;">
+      <div class="stat-card"><div class="stat-num">90</div><div class="stat-label">Days from Profile 1 to Profile 2 on average across samdesk customers</div></div>
+      <div class="stat-card"><div class="stat-num">12</div><div class="stat-label">Months to reach full AWARE maturity (Profile 3) for most teams</div></div>
+      <div class="stat-card"><div class="stat-num">2 wks</div><div class="stat-label">Trial on your own data — enough to see the compression firsthand</div></div>
+    </div>
+  </div>
+  <div class="slide-num">27 / 33</div>
+</div>
+
+<!-- SLIDES 28–33 unchanged in content but kept consistent -->
+
+<!-- SLIDE 28 -->
+<div class="slide" id="s28">
+  <div class="slide-section">Where to start</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner">
+    <div class="eyebrow">You don't have to boil the ocean</div>
+    <div class="h2">The fastest path to maturity is one stage at a time — not everything at once</div>
+    <div class="body-lg" style="margin-top:12px;">Most teams stall because they try to transform everything simultaneously. The teams that move fastest pick one stage, go deep, measure it, then expand.</div>
+    <div class="step-grid" style="margin-top:20px;">
+      <div class="step-card sc1">
+        <div class="step-num sn1">1</div>
+        <div class="step-title">Start with Watch + Analyze</div>
+        <div class="step-body">Highest immediate ROI. Automate the context and org impact mapping that happens after an alert arrives. Save 6+ analyst hours per incident. Most teams see measurable payback within 30 days.</div>
+      </div>
+      <div class="step-card sc2">
+        <div class="step-num sn2">2</div>
+        <div class="step-title">Add Anticipate</div>
+        <div class="step-body">Layer in pre-incident intelligence — daily intel digest, historical event search, pre-travel briefs. This is where the reactive-to-proactive shift actually happens.</div>
+      </div>
+      <div class="step-card sc3">
+        <div class="step-num sn3">3</div>
+        <div class="step-title">Build Resolve + Enable</div>
+        <div class="step-body">Automated threshold triggers, AI-guided complex responses, and measurement infrastructure. This is what turns security into a business enabler — and gives you the data to prove it.</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">28 / 33</div>
+</div>
+
+<!-- SLIDE 29 -->
+<div class="slide tamara-slide" id="s29">
+  <div class="slide-section">Where to start · Watch + Analyze</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner" style="justify-content:center;">
+    <div class="eyebrow" style="color:#a07010;">Step 1 — Watch + Analyze</div>
+    <div class="quote-mark">"</div>
+    <div class="quote-text">Watch and Analyze is where we always recommend starting — not because it's the most exciting stage, but because it delivers the fastest, most visible return. Within two weeks on their own data, teams see incidents run through automatically that previously took six hours. That proof point changes the internal conversation immediately.</div>
+    <div class="quote-attr">— Tamara, VP Customer Success</div>
+    <div class="stat-grid g3" style="margin-top:28px;">
+      <div class="stat-card"><div class="stat-num">6+ hrs</div><div class="stat-label">Analyst time saved per incident once post-alert context work is automated</div></div>
+      <div class="stat-card"><div class="stat-num">30 days</div><div class="stat-label">Average time to first measurable payback for new customers</div></div>
+      <div class="stat-card"><div class="stat-num">2 weeks</div><div class="stat-label">Trial on your own data — see the compression before you commit to anything</div></div>
+    </div>
+  </div>
+  <div class="slide-num">29 / 33</div>
+</div>
+
+<!-- SLIDE 30 -->
+<div class="slide" id="s30">
+  <div class="slide-section">Where to start · Anticipate</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner" style="justify-content:center;">
+    <div class="eyebrow" style="color:#b8350a;">Step 2 — Add Anticipate</div>
+    <div class="h2" style="max-width:900px;">Once Watch is working, layer in pre-incident intelligence — this is where reactive becomes proactive</div>
+    <div class="stat-grid g2" style="margin-top:24px;">
+      <div class="stat-card" style="background:#fff5f2;border-color:#F5C4B3;">
+        <div style="font-size:12px;font-weight:700;color:#a32d2d;margin-bottom:8px;">Without Anticipate</div>
+        <div class="body">A protest blocks your key logistics hub. Your team finds out at the same time as everyone else — from the news, after it's already disrupted operations. The security team reacts.</div>
+      </div>
+      <div class="stat-card" style="background:#e2f5ee;border-color:#9FE1CB;">
+        <div style="font-size:12px;font-weight:700;color:#0c5e45;margin-bottom:8px;">With Anticipate</div>
+        <div class="body">Historical search shows this route has experienced protest disruptions three times in the past six months. Pre-travel brief flags the risk. Logistics rerouted before the event. Operations stay productive.</div>
+      </div>
+    </div>
+    <div class="callout callout-green" style="margin-top:20px;">
+      <div class="callout-title">Anticipate is the stage that changes how security teams are perceived. When a security leader can brief on what's coming — not just what happened — they become a strategic input to business planning.</div>
+    </div>
+  </div>
+  <div class="slide-num">30 / 33</div>
+</div>
+
+<!-- SLIDE 31 -->
+<div class="slide tamara-slide" id="s31">
+  <div class="slide-section">Where to start · Resolve + Enable</div>
+  <div class="presenter-tag pt-tamara">Tamara</div>
+  <div class="slide-inner" style="justify-content:center;">
+    <div class="eyebrow" style="color:#5b3fc8;">Step 3 — Build Resolve + Enable</div>
+    <div class="quote-mark">"</div>
+    <div class="quote-text">Resolve and Enable are where the transformation becomes permanent. Resolve turns your security operation into something consistent and scalable — not dependent on heroics. Enable turns your security function into something the business wants to invest in. Together, they close the loop on the entire AWARE journey.</div>
+    <div class="quote-attr">— Tamara, VP Customer Success</div>
+    <div class="callout callout-purple" style="margin-top:32px;">
+      <div class="callout-title purple">The capability journey is also the commercial journey. Pricing and packaging is built around the AWARE stages — there's a clear path to mature your capability and expand your investment as you prove ROI at each stage.</div>
+    </div>
+  </div>
+  <div class="slide-num">31 / 33</div>
+</div>
+
+<!-- SLIDE 32 -->
+<div class="slide" id="s32">
+  <div class="slide-section">Close</div>
+  <div class="presenter-tag pt-kris">Kris</div>
+  <div class="slide-inner" style="justify-content:center;">
+    <div class="eyebrow">The closing thesis</div>
+    <div class="h2" style="font-size:28px;max-width:900px;line-height:1.3;">AI is not coming for your analysts. It's coming for their triage queue.<br><br>AWARE is the map. The maturity journey is the path. The first step is knowing where you are.</div>
+    <div class="body-lg" style="margin-top:24px;">The teams furthest along this journey aren't the biggest or best-resourced. They're the ones that started. The environment isn't getting simpler. The signals aren't slowing down. The window to build a proactive security operation is now.</div>
+    <div class="callout callout-green" style="margin-top:24px;">
+      <div class="callout-title">Two weeks. Your data. Your incidents. Your workflow. See what AI compression looks like for your GSOC — before you commit to anything.</div>
+      <div class="callout-sub">Start your trial at samdesk.com</div>
+    </div>
+  </div>
+  <div class="slide-num">32 / 33</div>
+</div>
+
+<!-- SLIDE 33 -->
+<div class="slide" id="s33">
+  <div class="slide-section">Q&amp;A</div>
+  <div class="presenter-tag pt-both">Kris + Tamara</div>
+  <div class="slide-inner" style="justify-content:center;align-items:center;text-align:center;">
+    <div class="eyebrow">Questions</div>
+    <div class="h1" style="font-size:36px;margin-top:8px;">What questions do you have?</div>
+    <div class="body-lg" style="margin-top:16px;text-align:center;">Drop questions in the chat — Kris and Tamara will work through as many as possible.</div>
+    <div class="presenter-row" style="justify-content:center;margin-top:32px;">
+      <div class="presenter-card" style="background:#e2f5ee;border:1px solid #9FE1CB;"><div class="name" style="color:#0c5e45;">Kris</div><div class="title" style="color:#1D9E75;">Director, Product Marketing · samdesk</div></div>
+      <div class="presenter-card" style="background:#f0eaff;border:1px solid #C6C3F5;"><div class="name" style="color:#3C3489;">Tamara</div><div class="title" style="color:#7F77DD;">VP Customer Success · samdesk</div></div>
+    </div>
+    <div style="margin-top:40px;display:flex;flex-direction:column;gap:10px;max-width:700px;text-align:left;">
+      <div style="background:#fafaf8;border-radius:6px;padding:10px 16px;border-left:3px solid #1D9E75;font-size:12px;color:#555;"><strong style="color:#333;">Seeded Q1:</strong> What stage of AWARE do most teams underinvest in — and why?</div>
+      <div style="background:#fafaf8;border-radius:6px;padding:10px 16px;border-left:3px solid #1D9E75;font-size:12px;color:#555;"><strong style="color:#333;">Seeded Q2:</strong> How do you make the business case for AI investment to a CFO who sees security as a cost centre?</div>
+      <div style="background:#fafaf8;border-radius:6px;padding:10px 16px;border-left:3px solid #1D9E75;font-size:12px;color:#555;"><strong style="color:#333;">Seeded Q3:</strong> What does a realistic 90-day plan look like starting from where most teams are today?</div>
+      <div style="background:#fafaf8;border-radius:6px;padding:10px 16px;border-left:3px solid #1D9E75;font-size:12px;color:#555;"><strong style="color:#333;">Seeded Q4:</strong> Is this realistic for a smaller security team — or is this enterprise-only?</div>
+    </div>
+  </div>
+  <div class="slide-num">33 / 33</div>
+</div>
+
+</div>
+
+<script>
+let cur = 1;
+const total = 33;
+function showSlide(n) {
+  document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById('s'+n);
+  if (el) { el.classList.add('active'); el.scrollIntoView({behavior:'smooth',block:'center'}); }
+  document.getElementById('counter').textContent = n + ' / ' + total;
+  cur = n;
+}
+function next() { if (cur < total) showSlide(cur+1); }
+function prev() { if (cur > 1) showSlide(cur-1); }
+function goTo(n) { showSlide(n); }
+document.addEventListener('keydown', e => {
+  if (e.key==='ArrowRight'||e.key==='ArrowDown') next();
+  if (e.key==='ArrowLeft'||e.key==='ArrowUp') prev();
+});
+</script>
+</body>
+</html>
