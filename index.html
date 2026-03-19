@@ -123,10 +123,6 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 .sn1{color:var(--amber)}.sn2{color:var(--green)}.sn3{color:var(--purple)}
 .step-title{font-size:13px;font-weight:700;color:#fff}
 .step-body{font-size:11px;color:var(--muted);line-height:1.65;flex:1}
-.profile-box{border-radius:8px;padding:16px 18px;border:1px solid}
-.pb-dim{background:var(--surface2);border-color:var(--border)}
-.pb-green{background:#081A12;border-color:#0F3A0F}
-.pb-purple{background:#0F0A1E;border-color:#3C3489}
 /* PROVOCATION */
 .prov-line1{font-size:clamp(32px,5vw,64px);font-weight:900;color:#fff;line-height:1.15;text-align:center}
 .prov-line2{font-size:clamp(32px,5vw,64px);font-weight:900;color:var(--teal);line-height:1.15;text-align:center}
@@ -172,6 +168,23 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 .shift-arrow-label{font-size:20px;color:var(--dim);margin:4px 0}
 .shift-to{font-size:13px;font-weight:800;color:#fff;margin-bottom:8px}
 .shift-body{font-size:11px;color:var(--muted);line-height:1.55}
+/* DIAGNOSTIC PROFILE */
+.diag-profile{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px;flex:1}
+.dp-left{display:flex;flex-direction:column;gap:10px}
+.dp-right{background:#081A12;border-radius:8px;padding:18px;border:1px solid var(--green-dark);display:flex;flex-direction:column;gap:8px}
+.signal-row{background:var(--surface2);border-radius:6px;padding:12px 14px;border:1px solid var(--border)}
+.signal-q{font-size:11px;font-weight:700;color:#fff;margin-bottom:6px}
+.signal-opts{display:flex;gap:6px;flex-wrap:wrap}
+.sig-opt{font-size:9px;font-weight:700;padding:3px 8px;border-radius:10px}
+.so-red{background:#2D0A0A;color:#F87171;border:1px solid #7F1D1D}
+.so-amber{background:#1C1208;color:#FCD34D;border:1px solid #78350F}
+.so-green{background:#081A12;color:var(--green);border:1px solid var(--green-dark)}
+/* INERTIA */
+.inertia-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;flex:1}
+.inertia-card{border-radius:8px;padding:18px;background:var(--surface2);border:1px solid var(--border)}
+.ic-title{font-size:12px;font-weight:700;color:#fff;margin-bottom:8px}
+.ic-body{font-size:11px;color:var(--muted);line-height:1.6}
+.ic-reveal{font-size:11px;font-weight:700;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .slide.active .slide-inner>*{animation:fadeIn .35s ease both}
 .slide.active .slide-inner>*:nth-child(1){animation-delay:.04s}
@@ -198,7 +211,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <button class="nav-btn" onclick="prev()">← Prev</button>
     <div class="nav-counter" id="counter">1 / 33</div>
     <button class="nav-btn" onclick="next()">Next →</button>
-    <span class="nav-ver">v3.0</span>
+    <span class="nav-ver">v4.0</span>
   </div>
 </div>
 
@@ -367,7 +380,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 <div class="slide-section">The problem</div><div class="slide-num">07 / 33</div>
 </div>
 
-<!-- S08 MODEL PROBLEM — BOLD STATEMENT -->
+<!-- S08 MODEL PROBLEM -->
 <div class="slide" id="s8" style="background:#050508">
 <div class="slide-inner" style="justify-content:center;max-width:900px;margin:0 auto">
   <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--dim);margin-bottom:28px">The diagnosis</div>
@@ -455,22 +468,22 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 <div class="slide-section">The problem → the model</div><div class="slide-num">11 / 33</div>
 </div>
 
-<!-- S12 AWARE INTRO -->
+<!-- S12 AWARE INTRO — REWRITTEN: diagnostic, not product reveal -->
 <div class="slide" id="s12">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
-  <div class="eyebrow">The framework</div>
-  <div class="h2">Introducing AWARE — a model for the full GSOC operational cycle</div>
-  <div class="body-lg" style="margin-top:10px">AWARE maps the five stages of how a security team operates. It's a framework for identifying where AI compresses time — and where your team has the most room to mature.</div>
-  <div class="aware-strip">
-    <div class="aware-cell aw-a"><div class="aware-letter">A</div><div class="aware-name">Anticipate</div><div class="aware-q">"What could happen — can we get ahead of it?"</div><div class="aware-tag">"We see events."</div></div>
-    <div class="aware-cell aw-w"><div class="aware-letter">W</div><div class="aware-name">Watch</div><div class="aware-q">"Is something happening — how is it evolving?"</div><div class="aware-tag">"We track events."</div></div>
-    <div class="aware-cell aw-ar"><div class="aware-letter">A</div><div class="aware-name">Analyze</div><div class="aware-q">"What does this mean for our people and operations?"</div><div class="aware-tag">"We understand events."</div></div>
-    <div class="aware-cell aw-r"><div class="aware-letter">R</div><div class="aware-name">Resolve</div><div class="aware-q">"What do we do — how fast can we execute?"</div><div class="aware-tag">"We act on events."</div></div>
-    <div class="aware-cell aw-e"><div class="aware-letter">E</div><div class="aware-name">Enable</div><div class="aware-q">"Are we improving — can we prove it?"</div><div class="aware-tag">"We enable security."</div></div>
+  <div class="eyebrow">The framework — used as a diagnostic, not a roadmap</div>
+  <div class="h2">AWARE maps where time is being lost in your operation — before it tells you what to do about it</div>
+  <div class="aware-strip" style="margin-top:18px">
+    <div class="aware-cell aw-a"><div class="aware-letter">A</div><div class="aware-name">Anticipate</div><div class="aware-q">"Do we have foresight — or are we always catching up?"</div><div class="aware-tag">Where most teams are weakest</div></div>
+    <div class="aware-cell aw-w"><div class="aware-letter">W</div><div class="aware-name">Watch</div><div class="aware-q">"Does detection come with context — or just a raw signal?"</div><div class="aware-tag">Where most teams start</div></div>
+    <div class="aware-cell aw-ar"><div class="aware-letter">A</div><div class="aware-name">Analyze</div><div class="aware-q">"How long from alert to trusted decision — honestly?"</div><div class="aware-tag">Where the 6 hours live</div></div>
+    <div class="aware-cell aw-r"><div class="aware-letter">R</div><div class="aware-name">Resolve</div><div class="aware-q">"Does response depend on who's on shift — or is it systematic?"</div><div class="aware-tag">Where the most is gained fastest</div></div>
+    <div class="aware-cell aw-e"><div class="aware-letter">E</div><div class="aware-name">Enable</div><div class="aware-q">"Can we prove we're improving — or is it just stories?"</div><div class="aware-tag">Where credibility is built or lost</div></div>
   </div>
-  <div class="callout cg"><div class="ct">Most GSOCs are strongest in Watch and Analyze — the middle stages. The highest AI impact is at the edges: Anticipate and Resolve. Enable is almost always underdeveloped — and the most important for long-term credibility.</div></div>
+  <div class="callout cr" style="margin-top:16px"><div class="ct">Before we walk through each stage, sit with the questions in that strip. The ones you couldn't answer confidently — that's your diagnostic. That's where the work is.</div></div>
+  <div class="callout ca" style="margin-top:8px"><div class="ct" style="color:var(--amber)">Most GSOCs are solid in the middle — Watch and Analyze. The edges are almost always underdeveloped. The edges are where competitive advantage is built.</div></div>
 </div>
 <div class="slide-section">Introducing AWARE</div><div class="slide-num">12 / 33</div>
 </div>
@@ -741,141 +754,111 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 <div class="slide-section">The maturity journey</div><div class="slide-num">22 / 33</div>
 </div>
 
-<!-- S23 TAMARA MATURITY -->
+<!-- S23 TAMARA WHERE TEAMS ARE — REWRITTEN: harder mirror -->
 <div class="slide" id="s23">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner" style="justify-content:center">
-  <div class="eyebrow">Where most teams actually are</div>
+  <div class="eyebrow">An honest picture</div>
   <div class="qmark">"</div>
-  <div class="qtext">When I look across our customer base, the pattern is consistent. Most teams have Watch covered — they have some kind of alerting tool. They're reasonable at Analyze. But Anticipate and Enable are almost always underdeveloped. And Resolve is where they have the most to gain the fastest.</div>
-  <div class="qattr">— Tamara, VP Customer Success</div>
-  <div class="callout cp" style="margin-top:28px"><div class="ct" style="color:#A09DF0">The edges — Anticipate and Enable — are where competitive advantage is built. Teams deprioritise them because Watch and Analyze feel more urgent. The teams that invest in the edges are the ones that pull ahead.</div></div>
+  <div class="qtext">Here's what I actually see when I look across our customer base before they change anything. Watch is usually covered. Analyze is slow and manual — most teams just accept it. Anticipate barely exists. Resolve is heroic and shift-dependent. And Enable? No one is measuring anything they'd want the CFO to see.</div>
+  <div class="qattr">— Tamara, VP Customer Success · samdesk</div>
+  <div class="callout cr" style="margin-top:24px"><div class="ct">That's not a criticism. It's the predictable outcome of a model built around detection rather than decisions. The teams who've changed it didn't have better people — they changed the model. That's the only variable.</div></div>
 </div>
 <div class="slide-section">The maturity journey</div><div class="slide-num">23 / 33</div>
 </div>
 
-<!-- S24 PROFILE 1 -->
+<!-- S24 DIAGNOSTIC — REWRITTEN: self-assessment, not flattering profile -->
 <div class="slide" id="s24">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner">
-  <div class="eyebrow">Profile 1</div>
-  <div class="h2">The Watcher — tool in place, but the work after the alert is still manual</div>
-  <div class="stage-layout">
-    <div class="before-box">
-      <div class="box-label bl-gray">Where they are today</div>
-      <div class="box-items">
-        <div class="bi">Alert tooling in place — detection is automated to a degree</div>
-        <div class="bi">Context, validation, and org impact mapping is all manual post-alert</div>
-        <div class="bi">Analyze is the bottleneck — 6+ hours per incident</div>
-        <div class="bi">Response depends entirely on who is on shift</div>
-        <div class="bi">No measurement — improvement is invisible to leadership</div>
+  <div class="eyebrow">Read your own signals</div>
+  <div class="h2">These are the questions that tell you where you actually are — not where you think you are</div>
+  <div class="diag-profile">
+    <div class="dp-left">
+      <div class="signal-row">
+        <div class="signal-q">After an alert fires, how long before an analyst has a complete org impact picture?</div>
+        <div class="signal-opts"><span class="sig-opt so-red">Hours — it's manual</span><span class="sig-opt so-amber">30–60 min — inconsistent</span><span class="sig-opt so-green">Minutes — it's automated</span></div>
       </div>
-      <div style="margin-top:10px;font-size:10px;color:var(--muted);font-style:italic">Common triggers: unhappy at incumbent renewal, had a disruptive incident, wants less fire hose and more signal</div>
+      <div class="signal-row">
+        <div class="signal-q">Does the quality of your incident response depend on who is on shift?</div>
+        <div class="signal-opts"><span class="sig-opt so-red">Yes — significantly</span><span class="sig-opt so-amber">Somewhat</span><span class="sig-opt so-green">No — it's systematic</span></div>
+      </div>
+      <div class="signal-row">
+        <div class="signal-q">How do you brief a traveler on risk before they depart?</div>
+        <div class="signal-opts"><span class="sig-opt so-red">We don't — or rarely</span><span class="sig-opt so-amber">Ad hoc, if asked</span><span class="sig-opt so-green">Automated brief, every time</span></div>
+      </div>
+      <div class="signal-row">
+        <div class="signal-q">If your CFO asked "is security improving?" — what would you show them?</div>
+        <div class="signal-opts"><span class="sig-opt so-red">Stories and anecdotes</span><span class="sig-opt so-amber">Some data, not systematic</span><span class="sig-opt so-green">A dashboard with trends</span></div>
+      </div>
     </div>
-    <div class="after-box">
-      <div class="box-label bl-green">What moves them forward</div>
-      <div class="box-items">
-        <div class="bi g">Automate Analyze — org impact mapping eliminates the 6-hour bottleneck</div>
-        <div class="bi g">Build risk thresholds so analysts decide, not just react</div>
-        <div class="bi g">Add pre-travel briefs and daily intel to start building Anticipate</div>
-        <div class="bi g">Start tracking time-to-outcome — make improvement visible</div>
-      </div>
-      <div class="comp-badge">Profile 1 → Profile 2 typically within 90 days</div>
+    <div class="dp-right">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green);margin-bottom:10px">What the answers tell you</div>
+      <div style="font-size:11px;color:#D1FAE5;line-height:1.6;margin-bottom:10px">If most of your answers are in the red column — your operation is costing significantly more than it needs to, and leadership doesn't know it.</div>
+      <div style="font-size:11px;color:#D1FAE5;line-height:1.6;margin-bottom:10px">If you're mostly amber — you've started but the model hasn't changed yet. You're patching, not rebuilding.</div>
+      <div style="font-size:11px;color:var(--green-light);line-height:1.6;font-weight:600">Green across the board means your operation is built around decisions, not alerts. Very few teams are here. This session is about how to get there.</div>
+      <div style="margin-top:14px;padding-top:10px;border-top:1px solid var(--green-dark);font-size:10px;color:var(--dim);font-style:italic">There are no wrong answers — only honest ones.</div>
     </div>
   </div>
 </div>
 <div class="slide-section">Maturity profiles</div><div class="slide-num">24 / 33</div>
 </div>
 
-<!-- S25 PROFILE 2 -->
+<!-- S25 WHY TEAMS DON'T MOVE — REWRITTEN: structural inertia -->
 <div class="slide" id="s25">
 <div class="gbg"></div>
-<div class="presenter-tag pt-tamara">Tamara</div>
+<div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
-  <div class="eyebrow">Profile 2</div>
-  <div class="h2">The Operator — AI-assisted decisioning, building toward automated resolution</div>
-  <div class="stage-layout">
-    <div class="before-box">
-      <div class="box-label bl-gray">Where they are today</div>
-      <div class="box-items">
-        <div class="bi">Solid Watch and Analyze — AI-assisted context and org mapping in place</div>
-        <div class="bi">Starting to automate threshold-based responses</div>
-        <div class="bi">Good at the middle stages — still weak at the edges</div>
-        <div class="bi">Basic metrics tracked but no structured maturity framework</div>
-        <div class="bi">Can't fully prove improvement to leadership yet</div>
-      </div>
-      <div style="margin-top:10px;font-size:10px;color:var(--muted);font-style:italic">Common triggers: stack consolidation, wanting more orchestration, looking to reduce contractor headcount</div>
+  <div class="eyebrow">The real reason change stalls</div>
+  <div class="h2">Teams don't stay stuck because they lack motivation. They stay stuck because the cost of staying still is invisible.</div>
+  <div class="inertia-grid">
+    <div class="inertia-card" style="background:#130505;border-color:#450A0A">
+      <div class="ic-title" style="color:#F87171">The cost is structural — not visible</div>
+      <div class="ic-body">Six hours of analyst time per incident doesn't appear as a line item. It shows up as headcount, contractor spend, and burnout. Nobody connects it to the model. So the model doesn't change.</div>
+      <div class="ic-reveal" style="color:#F87171;border-color:#7F1D1D">You can't make a case for change with a cost no one can see.</div>
     </div>
-    <div class="after-box">
-      <div class="box-label bl-green">What moves them forward</div>
-      <div class="box-items">
-        <div class="bi g">Expand automated Resolve — AI-suggested plans for complex incidents</div>
-        <div class="bi g">Build time-to-outcome KPIs and board-ready reporting</div>
-        <div class="bi g">Deepen Anticipate — historical search and advanced pre-travel intelligence</div>
-        <div class="bi g">AWARE maturity scoring — make the capability journey visible</div>
-      </div>
-      <div class="comp-badge">Profile 2 → Profile 3 typically within 6–12 months</div>
+    <div class="inertia-card" style="background:#130A00;border-color:#78350F">
+      <div class="ic-title" style="color:#FCD34D">The current model feels like it's working</div>
+      <div class="ic-body">Incidents get handled. Notifications go out. Nothing catastrophic happened last quarter. That's enough to defend the status quo — even while the gap widens between what the operation costs and what it produces.</div>
+      <div class="ic-reveal" style="color:#FCD34D;border-color:#78350F">Absence of visible failure is not evidence of operational health.</div>
+    </div>
+    <div class="inertia-card" style="background:#0A1020;border-color:var(--border2)">
+      <div class="ic-title" style="color:var(--blue)">The improvement metric doesn't exist</div>
+      <div class="ic-body">If you don't measure time-to-decision, you can't show it improving. If you can't show it improving, you can't make the case for investment. The absence of the metric is what makes the inertia permanent.</div>
+      <div class="ic-reveal" style="color:var(--blue);border-color:var(--border2)">The first act of changing the model is deciding to measure it.</div>
+    </div>
+    <div class="inertia-card" style="background:var(--surface2)">
+      <div class="ic-title">Transformation feels like a project</div>
+      <div class="ic-body">Teams hear "change the operational model" and imagine a 12-month transformation programme. So they defer it. The teams that move fastest discover it doesn't work that way — one stage, measured, then the next.</div>
+      <div class="ic-reveal" style="color:var(--muted)">The fastest path starts with one number, not a roadmap.</div>
     </div>
   </div>
 </div>
-<div class="slide-section">Maturity profiles</div><div class="slide-num">25 / 33</div>
+<div class="slide-section">Maturity journey</div><div class="slide-num">25 / 33</div>
 </div>
 
-<!-- S26 PROFILE 3 -->
+<!-- S26 TAMARA WHAT CHANGES FIRST -->
 <div class="slide" id="s26">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
-<div class="slide-inner">
-  <div class="eyebrow">Profile 3</div>
-  <div class="h2">The Enabler — full AWARE maturity, security as a measurable business function</div>
-  <div class="stage-layout">
-    <div class="profile-box pb-purple" style="flex:1">
-      <div class="box-label" style="color:#A09DF0">Where they are today</div>
-      <div class="box-items">
-        <div class="bi" style="color:#D1D5DB">Autonomous operations running — AI handles detection, context, and routine resolution</div>
-        <div class="bi" style="color:#D1D5DB">Analysts doing strategic work — foresight, scenario planning, program design</div>
-        <div class="bi" style="color:#D1D5DB">Security function is measurable and earns investment from leadership</div>
-        <div class="bi" style="color:#D1D5DB">Board sees security as a competitive advantage, not a cost centre</div>
-        <div class="bi" style="color:#D1D5DB">Focused on continuous improvement across all five AWARE stages</div>
-      </div>
-    </div>
-    <div class="after-box">
-      <div class="box-label bl-green">What this unlocks for the business</div>
-      <div class="box-items">
-        <div class="bi g">Security becomes a strategic partner — invited into business planning</div>
-        <div class="bi g">Budget conversations led with data — investment earns more investment</div>
-        <div class="bi g">Analysts become design partners — they pull the product roadmap forward</div>
-        <div class="bi g">Organisation avoids disruption at scale — people and operations stay productive</div>
-      </div>
-      <div class="comp-badge">Security as a business enabler — the new brief is fully met</div>
-    </div>
-  </div>
-</div>
-<div class="slide-section">Maturity profiles</div><div class="slide-num">26 / 33</div>
-</div>
-
-<!-- S27 KRIS SPEED -->
-<div class="slide" id="s27">
-<div class="gbg"></div>
-<div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner" style="justify-content:center">
-  <div class="eyebrow">The journey is faster than you think</div>
-  <div class="qmark" style="color:var(--teal)">"</div>
-  <div class="qtext" style="font-size:clamp(14px,2vw,22px)">The teams that move fastest aren't the ones with the biggest budgets. They're the ones that decided they want to be a business enabler — not a cost centre. That mindset shift happens before the technology. Once it does, the maturity journey accelerates.</div>
-  <div class="qattr">— Kris, Director, Product Marketing · samdesk</div>
+  <div class="eyebrow">What actually moves first</div>
+  <div class="qmark">"</div>
+  <div class="qtext">The change doesn't start with a platform decision. It starts when a GSOC leader decides they want a number — a real, defensible, improving number — for how long it takes their team to make a trusted decision. Once you want that number, everything else follows. The technology is secondary to the intention.</div>
+  <div class="qattr">— Tamara, VP Customer Success · samdesk</div>
   <div class="stat-grid g3" style="margin-top:28px">
-    <div class="stat-card"><div class="stat-num">90</div><div class="stat-label">Days from Profile 1 to Profile 2 on average across samdesk customers</div></div>
-    <div class="stat-card"><div class="stat-num">12</div><div class="stat-label">Months to reach full AWARE maturity (Profile 3) for most teams</div></div>
-    <div class="stat-card"><div class="stat-num">2 wks</div><div class="stat-label">Trial on your own data — enough to see the compression firsthand</div></div>
+    <div class="stat-card"><div class="stat-num">90</div><div class="stat-label">Days from first deployment to measurable time-to-decision improvement — on average across samdesk customers</div></div>
+    <div class="stat-card"><div class="stat-num">12</div><div class="stat-label">Months to reach full AWARE maturity — AI handling detection, context, and routine resolution systematically</div></div>
+    <div class="stat-card"><div class="stat-num">2 wks</div><div class="stat-label">Trial on your own data — enough time to see the compression and make the internal case</div></div>
   </div>
 </div>
-<div class="slide-section">The maturity journey</div><div class="slide-num">27 / 33</div>
+<div class="slide-section">Maturity journey</div><div class="slide-num">26 / 33</div>
 </div>
 
-<!-- S28 WHERE TO START -->
-<div class="slide" id="s28">
+<!-- S27 WHERE TO START -->
+<div class="slide" id="s27">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -888,11 +871,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <div class="step-card sc3"><div class="step-num sn3">3</div><div class="step-title">Build Resolve + Enable</div><div class="step-body">Automated threshold triggers, AI-guided complex responses, and measurement infrastructure. This is what turns security into a business enabler — and gives you the data to prove it.</div></div>
   </div>
 </div>
-<div class="slide-section">Where to start</div><div class="slide-num">28 / 33</div>
+<div class="slide-section">Where to start</div><div class="slide-num">27 / 33</div>
 </div>
 
-<!-- S29 TAMARA WATCH+ANALYZE -->
-<div class="slide" id="s29">
+<!-- S28 TAMARA WATCH+ANALYZE -->
+<div class="slide" id="s28">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner" style="justify-content:center">
@@ -906,11 +889,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <div class="stat-card"><div class="stat-num">2 weeks</div><div class="stat-label">Trial on your own data — see the compression before you commit to anything</div></div>
   </div>
 </div>
-<div class="slide-section">Where to start · Watch + Analyze</div><div class="slide-num">29 / 33</div>
+<div class="slide-section">Where to start · Watch + Analyze</div><div class="slide-num">28 / 33</div>
 </div>
 
-<!-- S30 ANTICIPATE SCENARIO -->
-<div class="slide" id="s30">
+<!-- S29 ANTICIPATE SCENARIO -->
+<div class="slide" id="s29">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner" style="justify-content:center">
@@ -928,11 +911,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   </div>
   <div class="callout cg" style="margin-top:16px"><div class="ct">Anticipate is the stage that changes how security teams are perceived. When a security leader can brief on what's coming — not just what happened — they become a strategic input to business planning.</div></div>
 </div>
-<div class="slide-section">Where to start · Anticipate</div><div class="slide-num">30 / 33</div>
+<div class="slide-section">Where to start · Anticipate</div><div class="slide-num">29 / 33</div>
 </div>
 
-<!-- S31 TAMARA RESOLVE+ENABLE -->
-<div class="slide" id="s31">
+<!-- S30 TAMARA RESOLVE+ENABLE -->
+<div class="slide" id="s30">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner" style="justify-content:center">
@@ -942,23 +925,48 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="qattr">— Tamara, VP Customer Success</div>
   <div class="callout cp" style="margin-top:28px"><div class="ct" style="color:#A09DF0">The capability journey is also the commercial journey. Pricing and packaging is built around the AWARE stages — there's a clear path to mature your capability and expand your investment as you prove ROI at each stage.</div></div>
 </div>
-<div class="slide-section">Where to start · Resolve + Enable</div><div class="slide-num">31 / 33</div>
+<div class="slide-section">Where to start · Resolve + Enable</div><div class="slide-num">30 / 33</div>
 </div>
 
-<!-- S32 CLOSE -->
-<div class="slide" id="s32">
+<!-- S31 COMPRESSION TABLE -->
+<div class="slide" id="s31">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
-<div class="slide-inner" style="justify-content:center">
-  <div class="eyebrow">The closing thesis</div>
-  <div class="h2" style="font-size:clamp(18px,2.4vw,28px);max-width:900px;line-height:1.35">AI is not coming for your analysts. It's coming for their triage queue.<br><br>AWARE is the map. The maturity journey is the path. The first step is knowing where you are.</div>
-  <div class="body-lg" style="margin-top:20px">The teams furthest along this journey aren't the biggest or best-resourced. They're the ones that started. The environment isn't getting simpler. The signals aren't slowing down. The window to build a proactive security operation is now.</div>
-  <div class="callout cg" style="margin-top:20px">
-    <div class="ct">Two weeks. Your data. Your incidents. Your workflow. See what AI compression looks like for your GSOC — before you commit to anything.</div>
-    <div class="cs">Start your trial at samdesk.com</div>
+<div class="slide-inner">
+  <div class="eyebrow">What changes at each stage</div>
+  <div class="h2">The full picture — where AI compresses time across the AWARE cycle</div>
+  <div class="ctable">
+    <div class="ct-hdr"><div class="ct-h">Stage</div><div class="ct-h">Current state</div><div class="ct-h">With AI</div><div class="ct-h">Compression</div></div>
+    <div class="ct-row"><div class="ct-stage"><div class="ct-letter" style="background:#b8350a">A</div></div><div class="ct-before"><strong style="color:#fff">Anticipate:</strong> Quarterly geo-political webinars. Generic global breakdowns — not org-specific. No continuous foresight between briefings.</div><div class="ct-after"><strong style="color:var(--green)">Anticipate:</strong> Daily intel digest. Historical event search. Pre-travel briefs showing disruption patterns before a traveler departs.</div><div class="ct-badge">Quarterly → Daily &amp; continuous</div></div>
+    <div class="ct-row"><div class="ct-stage"><div class="ct-letter" style="background:#a07010">W</div></div><div class="ct-before"><strong style="color:#fff">Watch:</strong> Alerting tools vary in quality. Specialist tools have alerting but it's not their core strength. Post-alert context still manual.</div><div class="ct-after"><strong style="color:var(--green)">Watch:</strong> Real-time AI detection across all threat categories, 24/7. Context delivered with the alert — not built manually after.</div><div class="ct-badge">Variable → consistent, continuous</div></div>
+    <div class="ct-row"><div class="ct-stage"><div class="ct-letter" style="background:#185fa5">A</div></div><div class="ct-before"><strong style="color:#fff">Analyze:</strong> Alert arrives. 6+ hours of manual work: validate accuracy, cross-reference org exposure, apply thresholds.</div><div class="ct-after"><strong style="color:var(--green)">Analyze:</strong> AI instantly maps event to org exposure. Analyst receives a pre-assembled brief. Validation cut from hours to minutes.</div><div class="ct-badge">6+ hrs → minutes</div></div>
+    <div class="ct-row"><div class="ct-stage"><div class="ct-letter" style="background:#0c5e45">R</div></div><div class="ct-before"><strong style="color:#fff">Resolve:</strong> Human decision for most responses. Complex resolutions need multiple policies and systems — orchestrated manually.</div><div class="ct-after"><strong style="color:var(--green)">Resolve:</strong> AI-suggested response plan specific to the org and risk vector. Threshold-based actions automated. Complex responses guided.</div><div class="ct-badge">Manual → AI-guided + automated</div></div>
+    <div class="ct-row" style="border-bottom:none"><div class="ct-stage"><div class="ct-letter" style="background:#5b3fc8">E</div></div><div class="ct-before"><strong style="color:#fff">Enable:</strong> No structured measurement. No maturity benchmarking. Improvement is invisible to leadership.</div><div class="ct-after"><strong style="color:var(--green)">Enable:</strong> Full audit trail. Time-to-detect, understand, and resolve tracked automatically. AWARE maturity score.</div><div class="ct-badge">Invisible → measurable</div></div>
   </div>
 </div>
-<div class="slide-section">Close</div><div class="slide-num">32 / 33</div>
+<div class="slide-section">The full picture</div><div class="slide-num">31 / 33</div>
+</div>
+
+<!-- S32 CLOSE — REWRITTEN: confrontation not comfort -->
+<div class="slide" id="s32" style="background:#050508">
+<div class="slide-inner" style="justify-content:center;max-width:860px;margin:0 auto">
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--dim);margin-bottom:24px">Before you leave</div>
+  <div style="font-size:clamp(18px,2.6vw,34px);font-weight:900;color:#fff;line-height:1.4;margin-bottom:28px">
+    The cost of staying still isn't zero.<br>
+    <span style="color:#374151">It's 6 hours per incident, compounding.</span><br>
+    <span style="color:#374151">It's a budget conversation you lose without data.</span><br>
+    <span style="color:#374151">It's the incident where the decision came too late.</span>
+  </div>
+  <div style="width:48px;height:2px;background:var(--green);margin-bottom:28px"></div>
+  <div style="font-size:clamp(14px,1.8vw,22px);font-weight:700;color:var(--teal);line-height:1.5;margin-bottom:24px">
+    The teams that changed their model didn't do it because they had more resources.<br>They did it because they stopped accepting that the cost was invisible.
+  </div>
+  <div style="background:#081A12;border:1px solid var(--green-dark);border-radius:8px;padding:16px 22px;max-width:680px">
+    <div style="font-size:12px;font-weight:700;color:var(--green-light);line-height:1.6">Two weeks. Your data. Your incidents. See what AI compression looks like for your GSOC — before you commit to anything.</div>
+    <div style="font-size:10px;color:var(--green);margin-top:6px;font-weight:700">samdesk.com</div>
+  </div>
+</div>
+<div class="slide-section" style="color:#374151">Close</div><div class="slide-num" style="color:#374151">32 / 33</div>
 </div>
 
 <!-- S33 Q&A -->
