@@ -52,8 +52,8 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 .g3{grid-template-columns:repeat(3,1fr)}
 .g2{grid-template-columns:repeat(2,1fr)}
 .stat-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:16px 18px}
-.stat-num{font-size:28px;font-weight:800;color:var(--green);line-height:1}
-.stat-label{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5}
+.stat-num{font-size:32px;font-weight:800;color:var(--green);line-height:1}
+.stat-label{font-size:15px;color:var(--muted);margin-top:6px;line-height:1.5}
 .callout{border-radius:8px;padding:12px 18px;margin-top:14px}
 .cg{background:#081A12;border:1px solid var(--green-dark)}
 .cg .ct{color:var(--green-light)}
@@ -65,64 +65,64 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 .ca .ct{color:var(--amber)}
 .cr{background:#130505;border:1px solid #7F1D1D}
 .cr .ct{color:#F87171}
-.ct{font-size:12px;font-weight:600;line-height:1.6}
-.cs{font-size:10px;margin-top:3px;color:var(--green)}
+.ct{font-size:16px;font-weight:600;line-height:1.6}
+.cs{font-size:14px;margin-top:3px;color:var(--green)}
 .stage-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px;flex:1}
 .before-box{background:var(--surface2);border-radius:8px;padding:16px 18px;border:1px solid var(--border);flex:1}
 .after-box{background:#081A12;border-radius:8px;padding:16px 18px;border:1px solid #0F3A0F;flex:1}
-.box-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.box-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
 .bl-gray{color:var(--dim)}
 .bl-green{color:var(--green)}
 .bl-red{color:#F87171}
 .box-items{display:flex;flex-direction:column;gap:5px}
-.bi{font-size:11px;color:var(--muted);line-height:1.5;padding-left:14px;position:relative}
-.bi::before{content:'→';position:absolute;left:0;color:var(--dim);font-size:9px;top:2px}
+.bi{font-size:15px;color:var(--muted);line-height:1.55;padding-left:18px;position:relative}
+.bi::before{content:'→';position:absolute;left:0;color:var(--dim);font-size:10px;top:2px}
 .bi.g::before{color:var(--green)}
 .bi.r::before{color:#F87171}
-.comp-badge{background:var(--green);color:#040C0A;border-radius:5px;padding:7px 12px;font-size:11px;font-weight:700;text-align:center;margin-top:10px}
+.comp-badge{background:var(--green);color:#040C0A;border-radius:5px;padding:8px 14px;font-size:13px;font-weight:700;text-align:center;margin-top:10px}
 .qmark{font-size:60px;color:var(--teal);line-height:.8;margin-bottom:10px;font-family:Georgia,serif}
-.qtext{font-size:clamp(14px,1.8vw,20px);font-weight:600;color:#fff;line-height:1.55;max-width:840px;font-style:italic}
-.qattr{font-size:11px;color:var(--dim);margin-top:16px;font-weight:600}
+.qtext{font-size:clamp(16px,2vw,22px);font-weight:600;color:#fff;line-height:1.55;max-width:840px;font-style:italic}
+.qattr{font-size:13px;color:var(--dim);margin-top:16px;font-weight:600}
 .aware-strip{display:grid;grid-template-columns:repeat(5,1fr);border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-top:16px}
 .aware-cell{padding:18px 12px;text-align:center;border-right:1px solid var(--border)}
 .aware-cell:last-child{border-right:none}
-.aware-letter{font-size:32px;font-weight:900;line-height:1}
-.aware-name{font-size:11px;font-weight:700;margin-top:4px}
-.aware-q{font-size:9.5px;color:var(--muted);margin-top:6px;line-height:1.4;font-style:italic}
-.aware-tag{font-size:10px;font-weight:700;margin-top:8px}
+.aware-letter{font-size:36px;font-weight:900;line-height:1}
+.aware-name{font-size:13px;font-weight:700;margin-top:4px}
+.aware-q{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.4;font-style:italic}
+.aware-tag{font-size:13px;font-weight:700;margin-top:8px}
 .aw-a{background:#130505} .aw-a .aware-letter,.aw-a .aware-name,.aw-a .aware-tag{color:#F87171}
 .aw-w{background:#130A00} .aw-w .aware-letter,.aw-w .aware-name,.aw-w .aware-tag{color:#FCD34D}
 .aw-ar{background:#0C1A2E} .aw-ar .aware-letter,.aw-ar .aware-name,.aw-ar .aware-tag{color:var(--blue)}
 .aw-r{background:#081A12} .aw-r .aware-letter,.aw-r .aware-name,.aw-r .aware-tag{color:var(--green)}
 .aw-e{background:#0F0A1E} .aw-e .aware-letter,.aw-e .aware-name,.aw-e .aware-tag{color:#A09DF0}
-.ctable{margin-top:14px;border:1px solid var(--border);border-radius:8px;overflow:hidden;font-size:11px}
+.ctable{margin-top:14px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
 .ct-hdr{display:grid;grid-template-columns:70px 1fr 1fr 130px;background:var(--surface2);border-bottom:1px solid var(--border)}
-.ct-h{padding:8px 10px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);border-right:1px solid var(--border)}
+.ct-h{padding:8px 10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);border-right:1px solid var(--border)}
 .ct-h:last-child{border-right:none}
 .ct-row{display:grid;grid-template-columns:70px 1fr 1fr 130px;border-bottom:1px solid var(--border)}
 .ct-row:last-child{border-bottom:none}
 .ct-stage{padding:10px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border)}
 .ct-letter{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;flex-shrink:0}
-.ct-before{padding:10px;border-right:1px solid var(--border);background:var(--surface2);color:var(--muted);line-height:1.5}
-.ct-after{padding:10px;border-right:1px solid var(--border);background:#081A12;color:#D1D5DB;line-height:1.5}
-.ct-badge{padding:10px;display:flex;align-items:center;justify-content:center;text-align:center;background:#0A1F14;font-size:10px;font-weight:700;color:var(--green);line-height:1.4}
+.ct-before{padding:12px;border-right:1px solid var(--border);background:var(--surface2);color:var(--muted);line-height:1.55;font-size:14px}
+.ct-after{padding:12px;border-right:1px solid var(--border);background:#081A12;color:#D1D5DB;line-height:1.55;font-size:14px}
+.ct-badge{padding:12px;display:flex;align-items:center;justify-content:center;text-align:center;background:#0A1F14;font-size:13px;font-weight:700;color:var(--green);line-height:1.4}
 .flow{display:flex;align-items:center;gap:0;margin-top:24px}
 .flow-step{flex:1;border-radius:8px;padding:14px 10px;text-align:center}
 .flow-arrow{color:var(--dim);font-size:18px;padding:0 4px;flex-shrink:0}
 .fs1{background:#130505}.fs2{background:#130A00}.fs3{background:#0C1A2E}.fs4{background:#081A12}.fs5{background:var(--surface2)}
-.flow-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.flow-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
 .fl1{color:#F87171}.fl2{color:#FCD34D}.fl3{color:var(--blue)}.fl4{color:var(--green)}.fl5{color:var(--muted)}
-.flow-text{font-size:10px;color:var(--muted);margin-top:4px;line-height:1.4}
-.flow-time{font-size:9px;font-weight:700;margin-top:5px;color:var(--red)}
+.flow-text{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.4}
+.flow-time{font-size:11px;font-weight:700;margin-top:5px;color:var(--red)}
 .maturity-tags{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
-.mt{text-align:center;padding:7px;border-radius:6px;font-size:9.5px;font-style:italic;font-weight:600}
+.mt{text-align:center;padding:8px;border-radius:6px;font-size:13px;font-style:italic;font-weight:600}
 .step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px;flex:1}
 .step-card{border-radius:8px;padding:20px;border:1px solid var(--border);border-top:3px solid;display:flex;flex-direction:column;gap:7px;background:var(--surface2)}
 .sc1{border-top-color:var(--amber)}.sc2{border-top-color:var(--green)}.sc3{border-top-color:var(--purple)}
 .step-num{font-size:24px;font-weight:900;line-height:1}
 .sn1{color:var(--amber)}.sn2{color:var(--green)}.sn3{color:var(--purple)}
-.step-title{font-size:13px;font-weight:700;color:#fff}
-.step-body{font-size:11px;color:var(--muted);line-height:1.65;flex:1}
+.step-title{font-size:15px;font-weight:700;color:#fff}
+.step-body{font-size:15px;color:var(--muted);line-height:1.65;flex:1}
 /* PROVOCATION */
 .prov-line1{font-size:clamp(32px,5vw,64px);font-weight:900;color:#fff;line-height:1.15;text-align:center}
 .prov-line2{font-size:clamp(32px,5vw,64px);font-weight:900;color:var(--teal);line-height:1.15;text-align:center}
@@ -137,54 +137,56 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 .diag-col{padding:18px}
 .diag-col-left{background:var(--surface2);border-right:1px solid var(--border)}
 .diag-col-right{background:#081A12}
-.diag-head{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.diag-head{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
 .dh-gray{color:var(--dim)}
 .dh-green{color:var(--green)}
 .diag-items{display:flex;flex-direction:column;gap:7px}
-.di{font-size:11.5px;line-height:1.55;padding-left:16px;position:relative}
-.di::before{content:'•';position:absolute;left:0;font-size:10px;top:3px}
+.di{font-size:15px;line-height:1.55;padding-left:20px;position:relative}
+.di::before{content:'•';position:absolute;left:0;font-size:11px;top:3px}
 .di-gray{color:var(--muted)} .di-gray::before{color:var(--dim)}
 .di-green{color:#D1FAE5} .di-green::before{color:var(--green)}
 /* MATH GRID */
 .math-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:20px}
 .mg-cell{padding:20px 16px;border-right:1px solid var(--border);text-align:center}
 .mg-cell:last-child{border-right:none}
-.mg-op{font-size:11px;color:var(--dim);font-weight:700;margin-bottom:4px}
-.mg-num{font-size:32px;font-weight:900;line-height:1}
-.mg-label{font-size:10px;color:var(--muted);margin-top:6px;line-height:1.4}
+.mg-op{font-size:12px;color:var(--dim);font-weight:700;margin-bottom:4px}
+.mg-num{font-size:36px;font-weight:900;line-height:1}
+.mg-label{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
 /* TOOL CARDS */
 .tool-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
 .tool-card{border-radius:8px;padding:18px;border:1px solid var(--border);background:var(--surface2)}
-.tool-name{font-size:12px;font-weight:700;color:#fff;margin-bottom:6px}
-.tool-body{font-size:11px;color:var(--muted);line-height:1.55}
-.tool-verdict{font-size:10px;font-weight:700;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)}
+.tool-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:8px}
+.tool-body{font-size:15px;color:var(--muted);line-height:1.55}
+.tool-verdict{font-size:14px;font-weight:700;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)}
 /* SHIFTS */
 .shift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;flex:1}
 .shift-card{border-radius:8px;padding:20px;background:var(--surface2);border:1px solid var(--border);border-left:3px solid}
 .sc-amber{border-left-color:var(--amber)}
 .sc-green{border-left-color:var(--green)}
 .sc-purple{border-left-color:var(--purple)}
-.shift-from{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);margin-bottom:4px}
+.shift-from{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);margin-bottom:4px}
 .shift-arrow-label{font-size:20px;color:var(--dim);margin:4px 0}
-.shift-to{font-size:13px;font-weight:800;color:#fff;margin-bottom:8px}
-.shift-body{font-size:11px;color:var(--muted);line-height:1.55}
+.shift-to{font-size:15px;font-weight:800;color:#fff;margin-bottom:8px}
+.shift-body{font-size:15px;color:var(--muted);line-height:1.55}
 /* DIAGNOSTIC PROFILE */
 .diag-profile{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px;flex:1}
 .dp-left{display:flex;flex-direction:column;gap:10px}
 .dp-right{background:#081A12;border-radius:8px;padding:18px;border:1px solid var(--green-dark);display:flex;flex-direction:column;gap:8px}
 .signal-row{background:var(--surface2);border-radius:6px;padding:12px 14px;border:1px solid var(--border)}
-.signal-q{font-size:11px;font-weight:700;color:#fff;margin-bottom:6px}
+.signal-q{font-size:15px;font-weight:700;color:#fff;margin-bottom:8px}
 .signal-opts{display:flex;gap:6px;flex-wrap:wrap}
-.sig-opt{font-size:9px;font-weight:700;padding:3px 8px;border-radius:10px}
+.sig-opt{font-size:13px;font-weight:700;padding:4px 10px;border-radius:10px}
 .so-red{background:#2D0A0A;color:#F87171;border:1px solid #7F1D1D}
 .so-amber{background:#1C1208;color:#FCD34D;border:1px solid #78350F}
 .so-green{background:#081A12;color:var(--green);border:1px solid var(--green-dark)}
 /* INERTIA */
 .inertia-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;flex:1}
 .inertia-card{border-radius:8px;padding:18px;background:var(--surface2);border:1px solid var(--border)}
-.ic-title{font-size:12px;font-weight:700;color:#fff;margin-bottom:8px}
-.ic-body{font-size:11px;color:var(--muted);line-height:1.6}
-.ic-reveal{font-size:11px;font-weight:700;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)}
+.ic-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:8px}
+.ic-body{font-size:15px;color:var(--muted);line-height:1.6}
+.ic-reveal{font-size:15px;font-weight:700;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)}
+.profile-box{border-radius:8px;padding:16px 18px;border:1px solid}
+.pb-purple{background:#0F0A1E;border-color:#3C3489}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .slide.active .slide-inner>*{animation:fadeIn .35s ease both}
 .slide.active .slide-inner>*:nth-child(1){animation-delay:.04s}
@@ -205,7 +207,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
       <button class="pill" style="background:#081A12;color:#1D9E75" onclick="goTo(12)">AWARE</button>
       <button class="pill" style="background:#081A12;color:#1D9E75" onclick="goTo(18)">Resolve+Enable</button>
       <button class="pill" style="background:#1a1a2a;color:#9CA3AF" onclick="goTo(22)">Maturity</button>
-      <button class="pill" style="background:#0C1A2E;color:#4A9EFF" onclick="goTo(28)">Start</button>
+      <button class="pill" style="background:#0C1A2E;color:#4A9EFF" onclick="goTo(27)">Start</button>
       <button class="pill" style="background:#0F0A1E;color:#A09DF0" onclick="goTo(32)">Close</button>
     </div>
     <button class="nav-btn" onclick="prev()">← Prev</button>
@@ -229,7 +231,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <div class="presenter-card"><div class="pname">Tamara</div><div class="ptitle">VP Customer Success · samdesk</div></div>
   </div>
   <div class="hero-meta">45 minutes · including live Q&amp;A</div>
-  <div style="margin-top:32px;display:inline-block;background:#0A1208;border:1px solid var(--green-dark);border-radius:6px;padding:5px 14px;font-size:11px;font-weight:700;color:#374151;letter-spacing:.08em">v4.0</div>
+  <div style="margin-top:24px;display:inline-block;background:#0A1208;border:1px solid var(--green-dark);border-radius:6px;padding:5px 14px;font-size:11px;font-weight:700;color:#5DCAA5;letter-spacing:.08em">v4.1</div>
 </div>
 <div class="slide-num" style="color:var(--teal)">01 / 33</div>
 </div>
@@ -253,9 +255,9 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="eyebrow">Start here</div>
   <div class="h2" style="font-size:clamp(20px,2.6vw,32px);max-width:860px">How long does it take your GSOC to make a trusted decision after an incident?</div>
   <div style="margin-top:28px;display:flex;flex-direction:column;gap:10px;max-width:760px">
-    <div style="background:#130505;border:1px solid #450A0A;border-radius:8px;padding:12px 18px;font-size:12px;color:#F87171;font-weight:600">Not: how fast does your alerting tool fire? — That's the easy part.</div>
-    <div style="background:#130A00;border:1px solid #78350F;border-radius:8px;padding:12px 18px;font-size:12px;color:#FCD34D;font-weight:600">Not: how quickly is the first notification sent? — That's table stakes.</div>
-    <div style="background:#081A12;border:1px solid var(--green-dark);border-radius:8px;padding:14px 18px;font-size:13px;color:var(--green-light);font-weight:700">From event in the world → analyst makes a confident, contextualised, defensible decision about what to do. <em style="color:var(--green)">How long?</em></div>
+    <div style="background:#130505;border:1px solid #450A0A;border-radius:8px;padding:12px 18px;font-size:15px;color:#F87171;font-weight:600">Not: how fast does your alerting tool fire? — That's the easy part.</div>
+    <div style="background:#130A00;border:1px solid #78350F;border-radius:8px;padding:12px 18px;font-size:15px;color:#FCD34D;font-weight:600">Not: how quickly is the first notification sent? — That's table stakes.</div>
+    <div style="background:#081A12;border:1px solid var(--green-dark);border-radius:8px;padding:14px 18px;font-size:16px;color:var(--green-light);font-weight:700">From event in the world → analyst makes a confident, contextualised, defensible decision about what to do. <em style="color:var(--green)">How long?</em></div>
   </div>
   <div class="callout ca" style="margin-top:20px;max-width:760px"><div class="ct" style="color:var(--amber)">If you know that number — you're ahead of most teams in this room. If you don't — that's exactly what this session is about.</div></div>
 </div>
@@ -315,7 +317,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
         <div class="bi">Tools, metrics, shift patterns — all built around detection</div>
         <div class="bi">Human analysts in the middle made sense at the scale</div>
       </div>
-      <div style="margin-top:10px;font-size:10px;color:var(--muted);font-style:italic">This model was rational. It was right for its time.</div>
+      <div style="margin-top:10px;font-size:13px;color:var(--muted);font-style:italic">This model was rational. It was right for its time.</div>
     </div>
     <div class="before-box" style="background:#130505;border-color:#450A0A">
       <div class="box-label bl-red">What changed</div>
@@ -326,7 +328,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
         <div class="bi r" style="color:#FECACA">The hard problem shifted: from finding signals to trusting decisions at speed</div>
         <div class="bi r" style="color:#FECACA">The model didn't move — you patched it with more people</div>
       </div>
-      <div style="margin-top:10px;font-size:10px;color:#F87171;font-weight:700">The gap between the model and the world keeps widening.</div>
+      <div style="margin-top:10px;font-size:13px;color:#F87171;font-weight:700">The gap between the model and the world keeps widening.</div>
     </div>
   </div>
 </div>
@@ -407,7 +409,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="shift-grid">
     <div class="shift-card sc-amber">
       <div class="shift-from">Stop measuring</div>
-      <div style="font-size:13px;color:var(--amber);font-weight:700;margin-bottom:2px">Alert volume</div>
+      <div style="font-size:15px;color:var(--amber);font-weight:700;margin-bottom:2px">Alert volume</div>
       <div class="shift-arrow-label">↓</div>
       <div class="shift-from">Start measuring</div>
       <div class="shift-to">Time-to-decision</div>
@@ -415,7 +417,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     </div>
     <div class="shift-card sc-green">
       <div class="shift-from">Stop doing</div>
-      <div style="font-size:13px;color:var(--green);font-weight:700;margin-bottom:2px">Building context manually after the alert</div>
+      <div style="font-size:15px;color:var(--green);font-weight:700;margin-bottom:2px">Building context manually after the alert</div>
       <div class="shift-arrow-label">↓</div>
       <div class="shift-from">Start doing</div>
       <div class="shift-to">Receiving the brief with the alert</div>
@@ -423,7 +425,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     </div>
     <div class="shift-card sc-purple">
       <div class="shift-from">Stop reporting on</div>
-      <div style="font-size:13px;color:var(--purple);font-weight:700;margin-bottom:2px">What you responded to</div>
+      <div style="font-size:15px;color:var(--purple);font-weight:700;margin-bottom:2px">What you responded to</div>
       <div class="shift-arrow-label">↓</div>
       <div class="shift-from">Start reporting on</div>
       <div class="shift-to">What you prevented</div>
@@ -458,18 +460,18 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="h2" style="max-width:900px">An outcomes model has five stages. Each one is a place where AI compresses time — and where most teams have room to mature.</div>
   <div class="body-lg" style="margin-top:16px">The teams furthest along this journey didn't start with a technology decision. They started with a question: <strong style="color:#fff">what does it actually mean to operate well?</strong></div>
   <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:28px">
-    <div style="text-align:center;padding:14px;background:#130505;border-radius:8px"><div style="font-size:22px;font-weight:900;color:#F87171">A</div><div style="font-size:10px;font-weight:700;color:#F87171;margin-top:4px">Anticipate</div><div style="font-size:9px;color:var(--dim);margin-top:4px;font-style:italic">Foresight before the incident</div></div>
-    <div style="text-align:center;padding:14px;background:#130A00;border-radius:8px"><div style="font-size:22px;font-weight:900;color:#FCD34D">W</div><div style="font-size:10px;font-weight:700;color:#FCD34D;margin-top:4px">Watch</div><div style="font-size:9px;color:var(--dim);margin-top:4px;font-style:italic">Detection that comes with context</div></div>
-    <div style="text-align:center;padding:14px;background:#0C1A2E;border-radius:8px"><div style="font-size:22px;font-weight:900;color:var(--blue)">A</div><div style="font-size:10px;font-weight:700;color:var(--blue);margin-top:4px">Analyze</div><div style="font-size:9px;color:var(--dim);margin-top:4px;font-style:italic">Decision in minutes, not hours</div></div>
-    <div style="text-align:center;padding:14px;background:#081A12;border-radius:8px"><div style="font-size:22px;font-weight:900;color:var(--green)">R</div><div style="font-size:10px;font-weight:700;color:var(--green);margin-top:4px">Resolve</div><div style="font-size:9px;color:var(--dim);margin-top:4px;font-style:italic">Execution that doesn't need heroics</div></div>
-    <div style="text-align:center;padding:14px;background:#0F0A1E;border-radius:8px"><div style="font-size:22px;font-weight:900;color:#A09DF0">E</div><div style="font-size:10px;font-weight:700;color:#A09DF0;margin-top:4px">Enable</div><div style="font-size:9px;color:var(--dim);margin-top:4px;font-style:italic">Proof that earns investment</div></div>
+    <div style="text-align:center;padding:14px;background:#130505;border-radius:8px"><div style="font-size:22px;font-weight:900;color:#F87171">A</div><div style="font-size:12px;font-weight:700;color:#F87171;margin-top:4px">Anticipate</div><div style="font-size:11px;color:var(--dim);margin-top:4px;font-style:italic">Foresight before the incident</div></div>
+    <div style="text-align:center;padding:14px;background:#130A00;border-radius:8px"><div style="font-size:22px;font-weight:900;color:#FCD34D">W</div><div style="font-size:12px;font-weight:700;color:#FCD34D;margin-top:4px">Watch</div><div style="font-size:11px;color:var(--dim);margin-top:4px;font-style:italic">Detection that comes with context</div></div>
+    <div style="text-align:center;padding:14px;background:#0C1A2E;border-radius:8px"><div style="font-size:22px;font-weight:900;color:var(--blue)">A</div><div style="font-size:12px;font-weight:700;color:var(--blue);margin-top:4px">Analyze</div><div style="font-size:11px;color:var(--dim);margin-top:4px;font-style:italic">Decision in minutes, not hours</div></div>
+    <div style="text-align:center;padding:14px;background:#081A12;border-radius:8px"><div style="font-size:22px;font-weight:900;color:var(--green)">R</div><div style="font-size:12px;font-weight:700;color:var(--green);margin-top:4px">Resolve</div><div style="font-size:11px;color:var(--dim);margin-top:4px;font-style:italic">Execution that doesn't need heroics</div></div>
+    <div style="text-align:center;padding:14px;background:#0F0A1E;border-radius:8px"><div style="font-size:22px;font-weight:900;color:#A09DF0">E</div><div style="font-size:12px;font-weight:700;color:#A09DF0;margin-top:4px">Enable</div><div style="font-size:11px;color:var(--dim);margin-top:4px;font-style:italic">Proof that earns investment</div></div>
   </div>
   <div class="callout cg" style="margin-top:16px"><div class="ct">This is AWARE — the operational framework for a GSOC designed around time-to-decision, not alert volume.</div></div>
 </div>
 <div class="slide-section">The problem → the model</div><div class="slide-num">11 / 33</div>
 </div>
 
-<!-- S12 AWARE INTRO — REWRITTEN: diagnostic, not product reveal -->
+<!-- S12 AWARE INTRO -->
 <div class="slide" id="s12">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
@@ -584,7 +586,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
         <div class="bi">Apply risk threshold — often from memory or a spreadsheet</div>
         <div class="bi">Decisions made on incomplete information, hours after the event</div>
       </div>
-      <div style="margin-top:10px;font-size:10px;color:var(--red);font-weight:600">Average time: 6+ hours. Assumes the right analyst is on shift.</div>
+      <div style="margin-top:10px;font-size:13px;color:var(--red);font-weight:600">Average time: 6+ hours. Assumes the right analyst is on shift.</div>
     </div>
     <div class="after-box">
       <div class="box-label bl-green">With samdesk Analyze</div>
@@ -678,7 +680,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
         <div class="bi">No maturity benchmarking — teams don't know where they stand</div>
         <div class="bi">Budget conversations based on anecdotes — security can't prove its value</div>
       </div>
-      <div style="margin-top:10px;font-size:10px;color:var(--muted);font-style:italic">Most vendors don't provide a capability maturity framework. Customers figure it out alone.</div>
+      <div style="margin-top:10px;font-size:13px;color:var(--muted);font-style:italic">Most vendors don't provide a capability maturity framework. Customers figure it out alone.</div>
     </div>
     <div class="after-box">
       <div class="box-label bl-green">With samdesk Enable</div>
@@ -755,7 +757,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 <div class="slide-section">The maturity journey</div><div class="slide-num">22 / 33</div>
 </div>
 
-<!-- S23 TAMARA WHERE TEAMS ARE — REWRITTEN: harder mirror -->
+<!-- S23 TAMARA WHERE TEAMS ARE -->
 <div class="slide" id="s23">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
@@ -769,7 +771,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 <div class="slide-section">The maturity journey</div><div class="slide-num">23 / 33</div>
 </div>
 
-<!-- S24 DIAGNOSTIC — REWRITTEN: self-assessment, not flattering profile -->
+<!-- S24 DIAGNOSTIC -->
 <div class="slide" id="s24">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
@@ -796,18 +798,18 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
       </div>
     </div>
     <div class="dp-right">
-      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green);margin-bottom:10px">What the answers tell you</div>
-      <div style="font-size:11px;color:#D1FAE5;line-height:1.6;margin-bottom:10px">If most of your answers are in the red column — your operation is costing significantly more than it needs to, and leadership doesn't know it.</div>
-      <div style="font-size:11px;color:#D1FAE5;line-height:1.6;margin-bottom:10px">If you're mostly amber — you've started but the model hasn't changed yet. You're patching, not rebuilding.</div>
-      <div style="font-size:11px;color:var(--green-light);line-height:1.6;font-weight:600">Green across the board means your operation is built around decisions, not alerts. Very few teams are here. This session is about how to get there.</div>
-      <div style="margin-top:14px;padding-top:10px;border-top:1px solid var(--green-dark);font-size:10px;color:var(--dim);font-style:italic">There are no wrong answers — only honest ones.</div>
+      <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green);margin-bottom:10px">What the answers tell you</div>
+      <div style="font-size:15px;color:#D1FAE5;line-height:1.6;margin-bottom:10px">If most of your answers are in the red column — your operation is costing significantly more than it needs to, and leadership doesn't know it.</div>
+      <div style="font-size:15px;color:#D1FAE5;line-height:1.6;margin-bottom:10px">If you're mostly amber — you've started but the model hasn't changed yet. You're patching, not rebuilding.</div>
+      <div style="font-size:15px;color:var(--green-light);line-height:1.6;font-weight:600">Green across the board means your operation is built around decisions, not alerts. Very few teams are here. This session is about how to get there.</div>
+      <div style="margin-top:14px;padding-top:10px;border-top:1px solid var(--green-dark);font-size:13px;color:var(--dim);font-style:italic">There are no wrong answers — only honest ones.</div>
     </div>
   </div>
 </div>
 <div class="slide-section">Maturity profiles</div><div class="slide-num">24 / 33</div>
 </div>
 
-<!-- S25 WHY TEAMS DON'T MOVE — REWRITTEN: structural inertia -->
+<!-- S25 WHY TEAMS DON'T MOVE -->
 <div class="slide" id="s25">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
@@ -902,11 +904,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="h2" style="max-width:900px">Once Watch is working, layer in pre-incident intelligence — this is where reactive becomes proactive</div>
   <div class="stat-grid g2" style="margin-top:20px">
     <div class="stat-card" style="background:#130505;border-color:#450A0A">
-      <div style="font-size:11px;font-weight:700;color:#F87171;margin-bottom:8px">Without Anticipate</div>
+      <div style="font-size:14px;font-weight:700;color:#F87171;margin-bottom:8px">Without Anticipate</div>
       <div class="body">A protest blocks your key logistics hub. Your team finds out at the same time as everyone else — from the news, after it's already disrupted operations. The security team reacts.</div>
     </div>
     <div class="stat-card" style="background:#081A12;border-color:#0F3A0F">
-      <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:8px">With Anticipate</div>
+      <div style="font-size:14px;font-weight:700;color:var(--green);margin-bottom:8px">With Anticipate</div>
       <div class="body">Historical search shows this route has experienced protest disruptions three times in the past six months. Pre-travel brief flags the risk. Logistics rerouted before the event. Operations stay productive.</div>
     </div>
   </div>
@@ -948,7 +950,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 <div class="slide-section">The full picture</div><div class="slide-num">31 / 33</div>
 </div>
 
-<!-- S32 CLOSE — REWRITTEN: confrontation not comfort -->
+<!-- S32 CLOSE -->
 <div class="slide" id="s32" style="background:#050508">
 <div class="slide-inner" style="justify-content:center;max-width:860px;margin:0 auto">
   <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--dim);margin-bottom:24px">Before you leave</div>
@@ -963,8 +965,8 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     The teams that changed their model didn't do it because they had more resources.<br>They did it because they stopped accepting that the cost was invisible.
   </div>
   <div style="background:#081A12;border:1px solid var(--green-dark);border-radius:8px;padding:16px 22px;max-width:680px">
-    <div style="font-size:12px;font-weight:700;color:var(--green-light);line-height:1.6">Two weeks. Your data. Your incidents. See what AI compression looks like for your GSOC — before you commit to anything.</div>
-    <div style="font-size:10px;color:var(--green);margin-top:6px;font-weight:700">samdesk.com</div>
+    <div style="font-size:15px;font-weight:700;color:var(--green-light);line-height:1.6">Two weeks. Your data. Your incidents. See what AI compression looks like for your GSOC — before you commit to anything.</div>
+    <div style="font-size:13px;color:var(--green);margin-top:6px;font-weight:700">samdesk.com</div>
   </div>
 </div>
 <div class="slide-section" style="color:#374151">Close</div><div class="slide-num" style="color:#374151">32 / 33</div>
@@ -983,10 +985,10 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <div class="presenter-card"><div class="pname">Tamara</div><div class="ptitle">VP Customer Success · samdesk</div></div>
   </div>
   <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;max-width:700px;text-align:left">
-    <div style="background:var(--surface2);border-radius:6px;padding:10px 14px;border-left:3px solid var(--green);font-size:11px;color:var(--muted)"><strong style="color:#fff">Seeded Q1:</strong> What stage of AWARE do most teams underinvest in — and why?</div>
-    <div style="background:var(--surface2);border-radius:6px;padding:10px 14px;border-left:3px solid var(--green);font-size:11px;color:var(--muted)"><strong style="color:#fff">Seeded Q2:</strong> How do you make the business case for AI investment to a CFO who sees security as a cost centre?</div>
-    <div style="background:var(--surface2);border-radius:6px;padding:10px 14px;border-left:3px solid var(--green);font-size:11px;color:var(--muted)"><strong style="color:#fff">Seeded Q3:</strong> What does a realistic 90-day plan look like starting from where most teams are today?</div>
-    <div style="background:var(--surface2);border-radius:6px;padding:10px 14px;border-left:3px solid var(--green);font-size:11px;color:var(--muted)"><strong style="color:#fff">Seeded Q4:</strong> Is this realistic for a smaller security team — or is this enterprise-only?</div>
+    <div style="background:var(--surface2);border-radius:6px;padding:10px 14px;border-left:3px solid var(--green);font-size:14px;color:var(--muted)"><strong style="color:#fff">Seeded Q1:</strong> What stage of AWARE do most teams underinvest in — and why?</div>
+    <div style="background:var(--surface2);border-radius:6px;padding:10px 14px;border-left:3px solid var(--green);font-size:14px;color:var(--muted)"><strong style="color:#fff">Seeded Q2:</strong> How do you make the business case for AI investment to a CFO who sees security as a cost centre?</div>
+    <div style="background:var(--surface2);border-radius:6px;padding:10px 14px;border-left:3px solid var(--green);font-size:14px;color:var(--muted)"><strong style="color:#fff">Seeded Q3:</strong> What does a realistic 90-day plan look like starting from where most teams are today?</div>
+    <div style="background:var(--surface2);border-radius:6px;padding:10px 14px;border-left:3px solid var(--green);font-size:14px;color:var(--muted)"><strong style="color:#fff">Seeded Q4:</strong> Is this realistic for a smaller security team — or is this enterprise-only?</div>
   </div>
 </div>
 <div class="slide-section">Q&amp;A</div><div class="slide-num">33 / 33</div>
