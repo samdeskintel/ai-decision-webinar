@@ -55,16 +55,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 .stat-num{font-size:32px;font-weight:800;color:var(--green);line-height:1}
 .stat-label{font-size:15px;color:var(--muted);margin-top:6px;line-height:1.5}
 .callout{border-radius:8px;padding:12px 18px;margin-top:14px}
-.cg{background:#081A12;border:1px solid var(--green-dark)}
-.cg .ct{color:var(--green-light)}
-.cp{background:#0F0A1E;border:1px solid #3C3489}
-.cp .ct{color:#A09DF0}
-.cb{background:#0C1A2E;border:1px solid var(--border2)}
-.cb .ct{color:var(--blue)}
-.ca{background:#1C1208;border:1px solid #78350F}
-.ca .ct{color:var(--amber)}
-.cr{background:#130505;border:1px solid #7F1D1D}
-.cr .ct{color:#F87171}
+.cg{background:#081A12;border:1px solid var(--green-dark)} .cg .ct{color:var(--green-light)}
+.cp{background:#0F0A1E;border:1px solid #3C3489} .cp .ct{color:#A09DF0}
+.cb{background:#0C1A2E;border:1px solid var(--border2)} .cb .ct{color:var(--blue)}
+.ca{background:#1C1208;border:1px solid #78350F} .ca .ct{color:var(--amber)}
+.cr{background:#130505;border:1px solid #7F1D1D} .cr .ct{color:#F87171}
 .ct{font-size:16px;font-weight:600;line-height:1.6}
 .cs{font-size:14px;margin-top:3px;color:var(--green)}
 .stage-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px;flex:1}
@@ -107,9 +102,9 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 .mt{text-align:center;padding:8px;border-radius:6px;font-size:13px;font-style:italic;font-weight:600}
 .step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px;flex:1}
 .step-card{border-radius:8px;padding:20px;border:1px solid var(--border);border-top:3px solid;display:flex;flex-direction:column;gap:7px;background:var(--surface2)}
-.sc1{border-top-color:var(--amber)}.sc2{border-top-color:var(--green)}.sc3{border-top-color:var(--purple)}
+.sc1{border-top-color:var(--amber)} .sc2{border-top-color:var(--green)} .sc3{border-top-color:var(--purple)}
 .step-num{font-size:24px;font-weight:900;line-height:1}
-.sn1{color:var(--amber)}.sn2{color:var(--green)}.sn3{color:var(--purple)}
+.sn1{color:var(--amber)} .sn2{color:var(--green)} .sn3{color:var(--purple)}
 .step-title{font-size:15px;font-weight:700;color:#fff}
 .step-body{font-size:15px;color:var(--muted);line-height:1.65;flex:1}
 .prov-line1{font-size:clamp(32px,5vw,64px);font-weight:900;color:#fff;line-height:1.15;text-align:center}
@@ -117,8 +112,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 .prov-sub{font-size:clamp(13px,1.6vw,18px);color:#4B5563;font-weight:600;text-align:center;margin-top:18px;letter-spacing:.04em}
 .prov-div{width:60px;height:3px;background:var(--green);border-radius:2px;margin:28px auto}
 .bold-statement{font-size:clamp(22px,3.2vw,42px);font-weight:900;color:#fff;line-height:1.3;max-width:840px}
-.bold-statement .accent{color:var(--teal)}
-.bold-statement .dim{color:var(--dim)}
+.bold-statement .accent{color:var(--teal)} .bold-statement .dim{color:var(--dim)}
 .diag{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:16px;flex:1}
 .diag-col{padding:18px}
 .diag-col-left{background:var(--surface2);border-right:1px solid var(--border)}
@@ -163,8 +157,6 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 .ic-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:8px}
 .ic-body{font-size:15px;color:var(--muted);line-height:1.6}
 .ic-reveal{font-size:15px;font-weight:700;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)}
-.profile-box{border-radius:8px;padding:16px 18px;border:1px solid}
-.pb-purple{background:#0F0A1E;border-color:#3C3489}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .slide.active .slide-inner>*{animation:fadeIn .35s ease both}
 .slide.active .slide-inner>*:nth-child(1){animation-delay:.04s}
@@ -181,12 +173,12 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="nav-controls">
     <div class="pills">
       <button class="pill" style="background:#1a1a2a;color:#9CA3AF" onclick="goTo(1)">Intro</button>
-      <button class="pill" style="background:#130505;color:#F87171" onclick="goTo(6)">The Problem</button>
-      <button class="pill" style="background:#081A12;color:#1D9E75" onclick="goTo(15)">AWARE</button>
-      <button class="pill" style="background:#081A12;color:#1D9E75" onclick="goTo(21)">Resolve+Enable</button>
-      <button class="pill" style="background:#1a1a2a;color:#9CA3AF" onclick="goTo(25)">Maturity</button>
-      <button class="pill" style="background:#0C1A2E;color:#4A9EFF" onclick="goTo(30)">Start</button>
-      <button class="pill" style="background:#0F0A1E;color:#A09DF0" onclick="goTo(35)">Close</button>
+      <button class="pill" style="background:#130505;color:#F87171" onclick="goTo(7)">The Problem</button>
+      <button class="pill" style="background:#081A12;color:#1D9E75" onclick="goTo(16)">AWARE</button>
+      <button class="pill" style="background:#081A12;color:#1D9E75" onclick="goTo(22)">Resolve+Enable</button>
+      <button class="pill" style="background:#1a1a2a;color:#9CA3AF" onclick="goTo(26)">Maturity</button>
+      <button class="pill" style="background:#0C1A2E;color:#4A9EFF" onclick="goTo(31)">Start</button>
+      <button class="pill" style="background:#0F0A1E;color:#A09DF0" onclick="goTo(36)">Close</button>
     </div>
     <button class="nav-btn" onclick="prev()">← Prev</button>
     <div class="nav-counter" id="counter">1 / 37</div>
@@ -211,7 +203,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="hero-meta">45 minutes · including live Q&amp;A</div>
   <div style="margin-top:20px;display:inline-block;background:#0A1208;border:1px solid var(--green-dark);border-radius:6px;padding:5px 14px;font-size:11px;font-weight:700;color:#5DCAA5;letter-spacing:.08em">v4.5</div>
 </div>
-<div class="slide-num" style="color:var(--teal)">01 / 35</div>
+<div class="slide-num" style="color:var(--teal)">01 / 37</div>
 </div>
 
 <!-- S02 SPEAKERS -->
@@ -220,7 +212,6 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 <div class="slide-inner" style="justify-content:center;align-items:center">
   <div class="eyebrow" style="text-align:center;margin-bottom:32px">Your hosts today</div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:860px;width:100%">
-    <!-- Kris -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:20px">
       <div style="width:180px;height:180px;border-radius:50%;overflow:hidden;border:3px solid var(--green-dark);background:var(--surface2)">
         <img src="https://media.licdn.com/dms/image/v2/C5103AQGBccOnMs5iLw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516297845705?e=1775692800&v=beta&t=yqYGmWP8IbjINMgk_Oz8Kg4Wh1EwjzWuiWnlEmWEnMw" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;font-weight:900;color:var(--teal)\'>KH</div>'">
@@ -232,7 +223,6 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
         <div style="margin-top:14px;font-size:13px;color:var(--muted);line-height:1.6;max-width:320px">Focused on how AI is reshaping security operations — drawing on patterns across prospects, customers, and the broader GSOC market.</div>
       </div>
     </div>
-    <!-- Tamara -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:20px">
       <div style="width:180px;height:180px;border-radius:50%;overflow:hidden;border:3px solid var(--green-dark);background:var(--surface2)">
         <img src="https://media.licdn.com/dms/image/v2/D5603AQGFybQzpBcdfg/profile-displayphoto-crop_800_800/B56Zo3VN21HYAI-/0/1761864901551?e=1775692800&v=beta&t=JziWUp1Yh3e9iQdYGeG_MWha1xt-xXn46Th3C01e8Tw" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;font-weight:900;color:var(--teal)\'>TB</div>'">
@@ -246,7 +236,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     </div>
   </div>
 </div>
-<div class="slide-section">Intro</div><div class="slide-num">02 / 35</div>
+<div class="slide-section">Intro</div><div class="slide-num">02 / 37</div>
 </div>
 
 <!-- S03 BEFORE WE BEGIN -->
@@ -258,8 +248,8 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:24px 28px;display:flex;gap:20px;align-items:flex-start">
       <div style="font-size:28px;flex-shrink:0;margin-top:2px">🙏</div>
       <div>
-        <div style="font-size:18px;font-weight:800;color:#fff;margin-bottom:8px">Thank you to ASIS</div>
-        <div style="font-size:15px;color:var(--muted);line-height:1.65">A warm thank you to <strong style="color:#fff">ASIS</strong> for hosting and sponsoring today's webinar. We're grateful for the platform and the community.</div>
+        <div style="font-size:18px;font-weight:800;color:#fff;margin-bottom:8px">Thank you to Security Magazine</div>
+        <div style="font-size:15px;color:var(--muted);line-height:1.65">A warm thank you to <strong style="color:#fff">Security Magazine</strong> for hosting and sponsoring today's webinar. We're grateful for the platform and the community. We also would like to thank everyone for joining the discussion on how security practices are evolving.</div>
       </div>
     </div>
     <div style="background:#081A12;border:1px solid var(--green-dark);border-radius:8px;padding:24px 28px;display:flex;gap:20px;align-items:flex-start">
@@ -278,60 +268,53 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     </div>
   </div>
 </div>
-<div class="slide-section">Intro</div><div class="slide-num">03 / 36</div>
+<div class="slide-section">Intro</div><div class="slide-num">03 / 37</div>
 </div>
 
 <!-- S04 GOALS -->
-<div class="slide" id="s3">
+<div class="slide" id="s4">
 <div class="gbg"></div>
 <div class="slide-inner" style="justify-content:center">
   <div class="eyebrow">What you'll leave with today</div>
   <div class="h2" style="max-width:900px">Three things — not a feature tour, not a product pitch</div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;flex:1">
-
-    <!-- Goal 1 -->
     <div style="background:var(--surface2);border:1px solid var(--border);border-top:3px solid #F87171;border-radius:8px;padding:28px 24px;display:flex;flex-direction:column;gap:12px">
       <div style="width:44px;height:44px;background:#130505;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px">⏱</div>
       <div style="font-size:18px;font-weight:800;color:#fff;line-height:1.3">A number you should be measuring — but probably aren't</div>
       <div style="font-size:14px;color:var(--muted);line-height:1.6;flex:1">Time-to-decision. Most GSOCs don't track it. By the end of today you'll know what it is, why it matters, and how to start measuring it. That's immediately actionable.</div>
       <div style="font-size:12px;font-weight:700;color:#F87171;text-transform:uppercase;letter-spacing:.06em">Goal 01</div>
     </div>
-
-    <!-- Goal 2 -->
     <div style="background:var(--surface2);border:1px solid var(--border);border-top:3px solid var(--amber);border-radius:8px;padding:28px 24px;display:flex;flex-direction:column;gap:12px">
       <div style="width:44px;height:44px;background:#130A00;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px">🔍</div>
       <div style="font-size:18px;font-weight:800;color:#fff;line-height:1.3">A diagnosis you can use with your leadership</div>
       <div style="font-size:14px;color:var(--muted);line-height:1.6;flex:1">The cost of staying with the current model isn't zero — it's just invisible. That framing changes the internal conversation. It shifts the question from "why change?" to "what is it costing us not to?"</div>
       <div style="font-size:12px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.06em">Goal 02</div>
     </div>
-
-    <!-- Goal 3 -->
     <div style="background:var(--surface2);border:1px solid var(--border);border-top:3px solid var(--green);border-radius:8px;padding:28px 24px;display:flex;flex-direction:column;gap:12px">
       <div style="width:44px;height:44px;background:#081A12;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px">🪞</div>
       <div style="font-size:18px;font-weight:800;color:#fff;line-height:1.3">An honest read on where your program actually sits</div>
       <div style="font-size:14px;color:var(--muted);line-height:1.6;flex:1">The AWARE self-assessment gives you a mirror — five diagnostic questions you can answer right now. You'll leave knowing where you are and what to work on first.</div>
       <div style="font-size:12px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em">Goal 03</div>
     </div>
-
   </div>
   <div style="margin-top:16px;background:#0A1208;border:1px solid var(--green-dark);border-radius:8px;padding:12px 18px;font-size:14px;color:var(--green-light);font-weight:600">These three things compound. You can't use the diagnosis without the number — and you can't know where to start without the honest read.</div>
 </div>
-<div class="slide-section">Intro</div><div class="slide-num">03 / 35</div>
+<div class="slide-section">Intro</div><div class="slide-num">04 / 37</div>
 </div>
 
-<!-- S04 PROVOCATION -->
-<div class="slide" id="s4" style="background:#050508">
+<!-- S05 PROVOCATION -->
+<div class="slide" id="s5" style="background:#050508">
 <div class="slide-inner" style="justify-content:center;align-items:center">
   <div class="prov-line1">You don't have an alert problem.</div>
   <div class="prov-div"></div>
   <div class="prov-line2">You have a decision problem.</div>
   <div class="prov-sub">Too many signals. Not enough trust.</div>
 </div>
-<div class="slide-num" style="color:#374151">04 / 35</div>
+<div class="slide-num" style="color:#374151">05 / 37</div>
 </div>
 
-<!-- S05 THE QUESTION -->
-<div class="slide" id="s5">
+<!-- S06 THE QUESTION -->
+<div class="slide" id="s6">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner" style="justify-content:center">
@@ -344,11 +327,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   </div>
   <div class="callout ca" style="margin-top:20px;max-width:760px"><div class="ct" style="color:var(--amber)">If you know that number — you're ahead of most teams in this room. If you don't — that's exactly what this session is about.</div></div>
 </div>
-<div class="slide-section">The problem</div><div class="slide-num">05 / 35</div>
+<div class="slide-section">The problem</div><div class="slide-num">06 / 37</div>
 </div>
 
-<!-- S06 MEASURING THE WRONG THING -->
-<div class="slide" id="s6">
+<!-- S07 MEASUREMENT GAP -->
+<div class="slide" id="s7">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -380,11 +363,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   </div>
   <div class="callout ca"><div class="ct" style="color:var(--amber)">Alert volume tells you how busy your tools are. Time-to-decision tells you how effective your operation is. Most GSOCs optimise for the first. Almost none measure the second.</div></div>
 </div>
-<div class="slide-section">The problem</div><div class="slide-num">06 / 35</div>
+<div class="slide-section">The problem</div><div class="slide-num">07 / 37</div>
 </div>
 
-<!-- S07 ROOT CAUSE -->
-<div class="slide" id="s7">
+<!-- S08 ROOT CAUSE -->
+<div class="slide" id="s8">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner" style="justify-content:center">
@@ -415,11 +398,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     </div>
   </div>
 </div>
-<div class="slide-section">The problem</div><div class="slide-num">07 / 35</div>
+<div class="slide-section">The problem</div><div class="slide-num">08 / 37</div>
 </div>
 
-<!-- S08 ARITHMETIC -->
-<div class="slide" id="s8">
+<!-- S09 ARITHMETIC -->
+<div class="slide" id="s9">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner" style="justify-content:center">
@@ -434,11 +417,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="callout cr" style="margin-top:20px"><div class="ct">This isn't inefficiency you can train away. It's a structural cost of a model built around manual context-building. It grows every year as signal volume grows — unless the model changes.</div></div>
   <div class="callout ca" style="margin-top:10px"><div class="ct" style="color:var(--amber)">The 6:1 ratio: for every $1 spent on security software, $6 is spent on people to operate and connect those tools. The software budget is the smallest part of what security operations actually cost.</div></div>
 </div>
-<div class="slide-section">The problem</div><div class="slide-num">08 / 35</div>
+<div class="slide-section">The problem</div><div class="slide-num">09 / 37</div>
 </div>
 
-<!-- S09 TOOL TRAP -->
-<div class="slide" id="s9">
+<!-- S10 TOOL TRAP -->
+<div class="slide" id="s10">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -463,11 +446,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   </div>
   <div class="callout ca" style="margin-top:14px"><div class="ct" style="color:var(--amber)">You bought speed at the front and back of the workflow. The middle — where the decision lives — stayed slow. Because no one named it as the problem.</div></div>
 </div>
-<div class="slide-section">The problem</div><div class="slide-num">09 / 35</div>
+<div class="slide-section">The problem</div><div class="slide-num">10 / 37</div>
 </div>
 
-<!-- S10 DIAGNOSIS -->
-<div class="slide" id="s10" style="background:#050508">
+<!-- S11 DIAGNOSIS -->
+<div class="slide" id="s11" style="background:#050508">
 <div class="slide-inner" style="justify-content:center;max-width:900px;margin:0 auto">
   <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--dim);margin-bottom:28px">The diagnosis</div>
   <div class="bold-statement">
@@ -479,11 +462,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <span style="color:#374151;font-size:clamp(16px,2vw,28px)">The model was built around activity.<br>The business needs outcomes.<br>You can't buy your way out of a model problem.</span>
   </div>
 </div>
-<div class="slide-section" style="color:#374151">The problem</div><div class="slide-num" style="color:#374151">10 / 35</div>
+<div class="slide-section" style="color:#374151">The problem</div><div class="slide-num" style="color:#374151">11 / 37</div>
 </div>
 
-<!-- S11 THREE SHIFTS -->
-<div class="slide" id="s11">
+<!-- S12 THREE SHIFTS -->
+<div class="slide" id="s12">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -517,11 +500,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   </div>
   <div class="callout cg" style="margin-top:14px"><div class="ct">None of these are technology changes on their own. The technology makes them possible. The decision to change has to come first.</div></div>
 </div>
-<div class="slide-section">The problem</div><div class="slide-num">11 / 35</div>
+<div class="slide-section">The problem</div><div class="slide-num">12 / 37</div>
 </div>
 
-<!-- S12 TAMARA FIELD VOICE -->
-<div class="slide" id="s12">
+<!-- S13 TAMARA FIELD VOICE -->
+<div class="slide" id="s13">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner" style="justify-content:center">
@@ -531,11 +514,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="qattr">— Tamara Byers, VP Customer Success · samdesk</div>
   <div class="callout cp" style="margin-top:28px"><div class="ct" style="color:#A09DF0">The pause is the problem. Not the people — the model they're operating. A model that was never designed to make that number visible.</div></div>
 </div>
-<div class="slide-section">The problem</div><div class="slide-num">12 / 35</div>
+<div class="slide-section">The problem</div><div class="slide-num">13 / 37</div>
 </div>
 
-<!-- S13 BRIDGE TO FRAMEWORK -->
-<div class="slide" id="s13">
+<!-- S14 BRIDGE TO FRAMEWORK -->
+<div class="slide" id="s14">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner" style="justify-content:center">
@@ -551,11 +534,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   </div>
   <div class="callout cg" style="margin-top:16px"><div class="ct">This is AWARE — the operational framework for a GSOC designed around time-to-decision, not alert volume.</div></div>
 </div>
-<div class="slide-section">The problem → the model</div><div class="slide-num">13 / 35</div>
+<div class="slide-section">The problem → the model</div><div class="slide-num">14 / 37</div>
 </div>
 
-<!-- S14 AWARE INTRO -->
-<div class="slide" id="s14">
+<!-- S15 AWARE DIAGNOSTIC -->
+<div class="slide" id="s15">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -571,11 +554,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="callout cr" style="margin-top:16px"><div class="ct">Before we walk through each stage, sit with the questions in that strip. The ones you couldn't answer confidently — that's your diagnostic. That's where the work is.</div></div>
   <div class="callout ca" style="margin-top:8px"><div class="ct" style="color:var(--amber)">Most GSOCs are solid in the middle — Watch and Analyze. The edges are almost always underdeveloped. The edges are where competitive advantage is built.</div></div>
 </div>
-<div class="slide-section">Introducing AWARE</div><div class="slide-num">14 / 35</div>
+<div class="slide-section">Introducing AWARE</div><div class="slide-num">15 / 37</div>
 </div>
 
-<!-- S15 ANTICIPATE -->
-<div class="slide" id="s15">
+<!-- S16 ANTICIPATE -->
+<div class="slide" id="s16">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -603,11 +586,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     </div>
   </div>
 </div>
-<div class="slide-section">AWARE · Anticipate</div><div class="slide-num">15 / 35</div>
+<div class="slide-section">AWARE · Anticipate</div><div class="slide-num">16 / 37</div>
 </div>
 
-<!-- S16 TAMARA ANTICIPATE -->
-<div class="slide" id="s16">
+<!-- S17 TAMARA ANTICIPATE -->
+<div class="slide" id="s17">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner" style="justify-content:center">
@@ -617,11 +600,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="qattr">— Tamara Byers, VP Customer Success</div>
   <div class="callout cg" style="margin-top:28px"><div class="ct">Anticipate is the stage with the lowest adoption today — and the highest strategic value. The pre-travel brief alone changes how security teams engage with the business before every major trip or deployment.</div></div>
 </div>
-<div class="slide-section">AWARE · Anticipate</div><div class="slide-num">16 / 35</div>
+<div class="slide-section">AWARE · Anticipate</div><div class="slide-num">17 / 37</div>
 </div>
 
-<!-- S17 WATCH -->
-<div class="slide" id="s17">
+<!-- S18 WATCH -->
+<div class="slide" id="s18">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -650,11 +633,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     </div>
   </div>
 </div>
-<div class="slide-section">AWARE · Watch</div><div class="slide-num">17 / 35</div>
+<div class="slide-section">AWARE · Watch</div><div class="slide-num">18 / 37</div>
 </div>
 
-<!-- S18 ANALYZE -->
-<div class="slide" id="s18">
+<!-- S19 ANALYZE -->
+<div class="slide" id="s19">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -684,11 +667,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     </div>
   </div>
 </div>
-<div class="slide-section">AWARE · Analyze</div><div class="slide-num">18 / 35</div>
+<div class="slide-section">AWARE · Analyze</div><div class="slide-num">19 / 37</div>
 </div>
 
-<!-- S19 TAMARA ANALYZE -->
-<div class="slide" id="s19">
+<!-- S20 TAMARA ANALYZE -->
+<div class="slide" id="s20">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner" style="justify-content:center">
@@ -698,11 +681,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="qattr">— Tamara Byers, VP Customer Success</div>
   <div class="callout cb" style="margin-top:28px"><div class="ct" style="color:var(--blue)">This is also where the 6:1 ratio lives. The labour cost in security operations is concentrated in Analyze — contractors, analysts, consultants all spending time on work AI can do instantly and more accurately.</div></div>
 </div>
-<div class="slide-section">AWARE · Analyze</div><div class="slide-num">19 / 35</div>
+<div class="slide-section">AWARE · Analyze</div><div class="slide-num">20 / 37</div>
 </div>
 
-<!-- S20 RESOLVE -->
-<div class="slide" id="s20">
+<!-- S21 RESOLVE -->
+<div class="slide" id="s21">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -730,11 +713,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     </div>
   </div>
 </div>
-<div class="slide-section">AWARE · Resolve</div><div class="slide-num">20 / 35</div>
+<div class="slide-section">AWARE · Resolve</div><div class="slide-num">21 / 37</div>
 </div>
 
-<!-- S21 TAMARA RESOLVE -->
-<div class="slide" id="s21">
+<!-- S22 TAMARA RESOLVE -->
+<div class="slide" id="s22">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner" style="justify-content:center">
@@ -744,11 +727,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="qattr">— Tamara Byers, VP Customer Success</div>
   <div class="callout cg" style="margin-top:28px"><div class="ct">The goal of Resolve is not speed for its own sake. It's keeping people, operations, and logistics productive through a disruption — without requiring a heroic effort from whoever happens to be on shift.</div></div>
 </div>
-<div class="slide-section">AWARE · Resolve</div><div class="slide-num">21 / 35</div>
+<div class="slide-section">AWARE · Resolve</div><div class="slide-num">22 / 37</div>
 </div>
 
-<!-- S22 ENABLE -->
-<div class="slide" id="s22">
+<!-- S23 ENABLE -->
+<div class="slide" id="s23">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -778,11 +761,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     </div>
   </div>
 </div>
-<div class="slide-section">AWARE · Enable</div><div class="slide-num">22 / 35</div>
+<div class="slide-section">AWARE · Enable</div><div class="slide-num">23 / 37</div>
 </div>
 
-<!-- S23 TAMARA ENABLE -->
-<div class="slide" id="s23">
+<!-- S24 TAMARA ENABLE -->
+<div class="slide" id="s24">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner" style="justify-content:center">
@@ -792,11 +775,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="qattr">— Tamara Byers, VP Customer Success</div>
   <div class="callout cp" style="margin-top:28px"><div class="ct" style="color:#A09DF0">Enable is the most neglected stage — and the one that changes the security team's relationship with the business most profoundly. It's not just about metrics. It's about credibility and earned investment.</div></div>
 </div>
-<div class="slide-section">AWARE · Enable</div><div class="slide-num">23 / 35</div>
+<div class="slide-section">AWARE · Enable</div><div class="slide-num">24 / 37</div>
 </div>
 
-<!-- S24 MATURITY CURVE -->
-<div class="slide" id="s24">
+<!-- S25 MATURITY CURVE -->
+<div class="slide" id="s25">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -837,11 +820,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <div class="mt" style="background:#0F0A1E;color:#A09DF0">"We enable security."</div>
   </div>
 </div>
-<div class="slide-section">The maturity journey</div><div class="slide-num">24 / 35</div>
+<div class="slide-section">The maturity journey</div><div class="slide-num">25 / 37</div>
 </div>
 
-<!-- S25 TAMARA WHERE TEAMS ARE -->
-<div class="slide" id="s25">
+<!-- S26 TAMARA WHERE TEAMS ARE -->
+<div class="slide" id="s26">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner" style="justify-content:center">
@@ -851,11 +834,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="qattr">— Tamara Byers, VP Customer Success · samdesk</div>
   <div class="callout cr" style="margin-top:24px"><div class="ct">That's not a criticism. It's the predictable outcome of a model built around detection rather than decisions. The teams who've changed it didn't have better people — they changed the model. That's the only variable.</div></div>
 </div>
-<div class="slide-section">The maturity journey</div><div class="slide-num">25 / 35</div>
+<div class="slide-section">The maturity journey</div><div class="slide-num">26 / 37</div>
 </div>
 
-<!-- S26 SELF-ASSESSMENT -->
-<div class="slide" id="s26">
+<!-- S27 SELF-ASSESSMENT -->
+<div class="slide" id="s27">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner">
@@ -889,11 +872,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     </div>
   </div>
 </div>
-<div class="slide-section">Maturity profiles</div><div class="slide-num">26 / 35</div>
+<div class="slide-section">Maturity profiles</div><div class="slide-num">27 / 37</div>
 </div>
 
-<!-- S27 WHY TEAMS DON'T MOVE -->
-<div class="slide" id="s27">
+<!-- S28 WHY TEAMS DON'T MOVE -->
+<div class="slide" id="s28">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -922,11 +905,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     </div>
   </div>
 </div>
-<div class="slide-section">Maturity journey</div><div class="slide-num">27 / 35</div>
+<div class="slide-section">Maturity journey</div><div class="slide-num">28 / 37</div>
 </div>
 
-<!-- S28 TAMARA WHAT CHANGES FIRST -->
-<div class="slide" id="s28">
+<!-- S29 TAMARA WHAT CHANGES FIRST -->
+<div class="slide" id="s29">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner" style="justify-content:center">
@@ -940,11 +923,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <div class="stat-card"><div class="stat-num">2 wks</div><div class="stat-label">Trial on your own data — enough time to see the compression and make the internal case</div></div>
   </div>
 </div>
-<div class="slide-section">Maturity journey</div><div class="slide-num">28 / 35</div>
+<div class="slide-section">Maturity journey</div><div class="slide-num">29 / 37</div>
 </div>
 
-<!-- S29 WHERE TO START -->
-<div class="slide" id="s29">
+<!-- S30 WHERE TO START -->
+<div class="slide" id="s30">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -957,11 +940,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <div class="step-card sc3"><div class="step-num sn3">3</div><div class="step-title">Build Resolve + Enable</div><div class="step-body">Automated threshold triggers, AI-guided complex responses, and measurement infrastructure. This is what turns security into a business enabler — and gives you the data to prove it.</div></div>
   </div>
 </div>
-<div class="slide-section">Where to start</div><div class="slide-num">29 / 35</div>
+<div class="slide-section">Where to start</div><div class="slide-num">30 / 37</div>
 </div>
 
-<!-- S30 TAMARA WATCH+ANALYZE -->
-<div class="slide" id="s30">
+<!-- S31 TAMARA WATCH+ANALYZE -->
+<div class="slide" id="s31">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner" style="justify-content:center">
@@ -975,11 +958,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <div class="stat-card"><div class="stat-num">2 weeks</div><div class="stat-label">Trial on your own data — see the compression before you commit to anything</div></div>
   </div>
 </div>
-<div class="slide-section">Where to start · Watch + Analyze</div><div class="slide-num">30 / 35</div>
+<div class="slide-section">Where to start · Watch + Analyze</div><div class="slide-num">31 / 37</div>
 </div>
 
-<!-- S31 ANTICIPATE SCENARIO -->
-<div class="slide" id="s31">
+<!-- S32 ANTICIPATE SCENARIO -->
+<div class="slide" id="s32">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner" style="justify-content:center">
@@ -997,11 +980,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   </div>
   <div class="callout cg" style="margin-top:16px"><div class="ct">Anticipate is the stage that changes how security teams are perceived. When a security leader can brief on what's coming — not just what happened — they become a strategic input to business planning.</div></div>
 </div>
-<div class="slide-section">Where to start · Anticipate</div><div class="slide-num">31 / 35</div>
+<div class="slide-section">Where to start · Anticipate</div><div class="slide-num">32 / 37</div>
 </div>
 
-<!-- S32 TAMARA RESOLVE+ENABLE -->
-<div class="slide" id="s32">
+<!-- S33 TAMARA RESOLVE+ENABLE -->
+<div class="slide" id="s33">
 <div class="gbg"></div>
 <div class="presenter-tag pt-tamara">Tamara</div>
 <div class="slide-inner" style="justify-content:center">
@@ -1011,11 +994,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   <div class="qattr">— Tamara Byers, VP Customer Success</div>
   <div class="callout cp" style="margin-top:28px"><div class="ct" style="color:#A09DF0">The capability journey is also the commercial journey. Pricing and packaging is built around the AWARE stages — there's a clear path to mature your capability and expand your investment as you prove ROI at each stage.</div></div>
 </div>
-<div class="slide-section">Where to start · Resolve + Enable</div><div class="slide-num">32 / 35</div>
+<div class="slide-section">Where to start · Resolve + Enable</div><div class="slide-num">33 / 37</div>
 </div>
 
-<!-- S33 COMPRESSION TABLE -->
-<div class="slide" id="s33">
+<!-- S34 COMPRESSION TABLE -->
+<div class="slide" id="s34">
 <div class="gbg"></div>
 <div class="presenter-tag pt-kris">Kris</div>
 <div class="slide-inner">
@@ -1030,11 +1013,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <div class="ct-row" style="border-bottom:none"><div class="ct-stage"><div class="ct-letter" style="background:#5b3fc8">E</div></div><div class="ct-before"><strong style="color:#fff">Enable:</strong> No structured measurement. No maturity benchmarking. Improvement is invisible to leadership.</div><div class="ct-after"><strong style="color:var(--green)">Enable:</strong> Full audit trail. Time-to-detect, understand, and resolve tracked automatically. AWARE maturity score.</div><div class="ct-badge">Invisible → measurable</div></div>
   </div>
 </div>
-<div class="slide-section">The full picture</div><div class="slide-num">33 / 35</div>
+<div class="slide-section">The full picture</div><div class="slide-num">34 / 37</div>
 </div>
 
-<!-- S34 CLOSE -->
-<div class="slide" id="s34" style="background:#050508">
+<!-- S35 CLOSE -->
+<div class="slide" id="s35" style="background:#050508">
 <div class="slide-inner" style="justify-content:center;max-width:860px;margin:0 auto">
   <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--dim);margin-bottom:24px">Before you leave</div>
   <div style="font-size:clamp(18px,2.6vw,34px);font-weight:900;color:#fff;line-height:1.4;margin-bottom:28px">
@@ -1052,11 +1035,11 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <div style="font-size:13px;color:var(--green);margin-top:6px;font-weight:700">samdesk.com</div>
   </div>
 </div>
-<div class="slide-section" style="color:#374151">Close</div><div class="slide-num" style="color:#374151">34 / 35</div>
+<div class="slide-section" style="color:#374151">Close</div><div class="slide-num" style="color:#374151">35 / 37</div>
 </div>
 
-<!-- S35 Q&A -->
-<div class="slide" id="s35">
+<!-- S36 Q&A -->
+<div class="slide" id="s36">
 <div class="gbg"></div>
 <div class="presenter-tag pt-both">Kris + Tamara</div>
 <div class="slide-inner" style="justify-content:center;align-items:center;text-align:center">
@@ -1074,7 +1057,23 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <div style="background:var(--surface2);border-radius:6px;padding:10px 14px;border-left:3px solid var(--green);font-size:14px;color:var(--muted)"><strong style="color:#fff">Seeded Q4:</strong> Is this realistic for a smaller security team — or is this enterprise-only?</div>
   </div>
 </div>
-<div class="slide-section">Q&amp;A</div><div class="slide-num">35 / 35</div>
+<div class="slide-section">Q&amp;A</div><div class="slide-num">36 / 37</div>
+</div>
+
+<!-- S37 THANK YOU -->
+<div class="slide" id="s37" style="background:#040C0A">
+<div class="gbg"></div>
+<div class="slide-inner" style="justify-content:center;align-items:center;text-align:center">
+  <div class="eyebrow" style="text-align:center">Thank you</div>
+  <div class="h1" style="text-align:center;margin-top:12px">samdesk.com</div>
+  <div class="body-lg" style="margin-top:16px;text-align:center;color:var(--teal)">Two weeks. Your data. Your incidents.<br>See what AI compression looks like for your GSOC.</div>
+  <div class="presenter-row" style="justify-content:center;margin-top:32px">
+    <div class="presenter-card"><div class="pname">Kris Hutton</div><div class="ptitle">Director, Product Marketing · samdesk</div></div>
+    <div class="presenter-card"><div class="pname">Tamara Byers</div><div class="ptitle">VP, Customer Success · samdesk</div></div>
+  </div>
+  <div style="margin-top:24px;font-size:12px;color:var(--dim)">Hosted by Security Magazine · Powered by samdesk</div>
+</div>
+<div class="slide-num" style="color:var(--teal)">37 / 37</div>
 </div>
 
 </div>
